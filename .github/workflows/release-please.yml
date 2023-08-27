@@ -17,7 +17,6 @@ jobs:
         with:
           token: ${{secrets.nve_TOKEN}}
           release-type: node
-          path: './*'
           package-name: ${{ steps.package.outputs.name }}
           changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false}]'
       - name: Upload Release Artifact
