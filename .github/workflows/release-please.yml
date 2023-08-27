@@ -15,6 +15,6 @@ jobs:
     steps:
       - uses: google-github-actions/release-please-action@v3
         with:
-          token: ${{github.nve_TOKEN}}
+          token: ${{secrets.nve_TOKEN}}
           release-type: node
           package-name: ${{ steps.package.outputs.name }}
