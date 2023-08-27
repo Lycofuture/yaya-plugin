@@ -1,5 +1,5 @@
 import fs from 'fs'
-const files = fs.readdirSync('./plugins/unit-plugin/apps').filter(file => file.endsWith('.js'))
+const files = fs.readdirSync('./plugins/yaya-plugin/apps').filter(file => file.endsWith('.js'))
 
 let ret = []
 
@@ -9,9 +9,9 @@ files.forEach((file) => {
 
 ret = await Promise.allSettled(ret)
 
-let apps = {}
-for (let i in files) {
-  let name = files[i].replace('.js', '')
+const apps = {}
+for (const i in files) {
+  const name = files[i].replace('.js', '')
 
   if (ret[i].status !== 'fulfilled') {
     logger.error(`载入插件错误：${logger.red(name)}`)

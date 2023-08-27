@@ -1,10 +1,8 @@
 {
-  "name": "unit-plugin",
+  "name": "yaya-plugin",
   "version": "1.0.0",
   "author": "Lycofuture",
   "description": "Bot Plugin",
   "type": "module",
-  "dependencies": {
-    "art-template": "^4.13.2"
-  }
+  "dependencies": {}
 }
