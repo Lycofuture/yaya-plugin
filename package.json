@@ -1,0 +1,10 @@
+{
+  "name": "unit-plugin",
+  "version": "1.0.0",
+  "author": "Lycofuture",
+  "description": "Bot Plugin",
+  "type": "module",
+  "dependencies": {
+    "art-template": "^4.13.2"
+  }
+}
