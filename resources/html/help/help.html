@@ -1,30 +1,38 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
+
 <head>
-    <meta charset="utf-8">
-    <title>菜单</title>
-    <link href={{css}} rel="stylesheet" type="text/css">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="{{css}}"/>
+    <link rel="shortcut icon" href="#"/>
 </head>
+{{@headStyle}}
+
 <body>
-<div class="head-box">
-    <div class="title">{{helpCfg.title}}</div>
-    <div class="label">{{helpCfg.subTitle || "Yunzai-Bot & Miao-Plugin"}}</div>
-    {{#each helpList}}
-    <div class="cont-box">
-        <div class="help-group">{{group}}</div>
-        <div class="help-table">
-            <div class="tr">
-                {{@each list}}
-                <div class="td">
-                    <strong class="help-title">{{ title }}</strong>
-                    <span class="help-desc">{{ desc }}</span>
+<div class="container" id="container">
+    <div class="head_box">
+        <div class="id_text">Yunzai-Bot</div>
+        <h2 class="day_text">你在干什么</h2>
+<!--        <img class="genshin_logo" src="{{pluResPath}}img/other/原神.png"/>-->
+    </div>
+    {{each helpList val}}
+    <div class="data_box">
+        <div class="tab_lable">{{val.group}}</div>
+        <div class="list">
+            {{each val.list item}}
+            <div class="item">
+<!--                <img class="icon" src="{{pluResPath}}img/icon/{{item.icon}}.png"/>-->
+                <div class="title">
+                    <div class="text">{{item.title}}</div>
+                    <div class="dec">{{item.desc}}</div>
                 </div>
-                {{/each}}
             </div>
+            {{/each}}
         </div>
     </div>
     {{/each}}
-    <div class="bottom-box">Yunzai-Bot</div>
+    <div class="logo">Created By Yunzai-Bot</div>
 </div>
 </body>
+
 </html>
