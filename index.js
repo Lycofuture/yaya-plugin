@@ -1,4 +1,6 @@
 import fs from 'fs'
+import { segment } from 'icqq'
+global.segment = segment
 const files = fs.readdirSync('./plugins/yaya-plugin/apps').filter(file => file.endsWith('.js'))
 
 let ret = []

@@ -12,36 +12,181 @@ class Cfg {
     this.initconfig()
   }
 
+  /**
+   * 读取package
+   * @returns {any}
+   */
   get package () {
     // if (this._path) return this._path
     this.data = JSON.parse(fs.readFileSync(`${this._path}/plugins/yaya-plugin/package.json`, 'utf8'))
     return this.data
   }
 
+  /**
+   * 插件名
+   * @returns {*}
+   */
   get setname () {
     return this.package.name
   }
 
+  /**
+   * 获取BOT目录
+   * @returns {string}
+   * @private
+   */
   get _path () {
     return process.cwd()
   }
 
   /**
    *
-   * @param app 插件名
-   * @param name 文件名
-   * @returns {any|boolean}
+   * @param root 目录
+   * @returns {`${string}/`}
    */
-  getConfig (app, name) {
-    const defaultConfig = JSON.parse(fs.readFileSync(this.defSetPath + app + `/${name}.js`, 'utf8'))
-    let userConfig = {}
-    try {
-      userConfig = JSON.parse(fs.readFileSync(this.configPath + app + `/${name}.js`, 'utf8'))
-    } catch (error) {
-      logger.error(`[${app}][${name}] 格式错误 ${error}`)
-      return false
+  getRoot (root = '') {
+    if (!root) {
+      root = `${this._path}/`
+    } else if (root === 'root' || root === 'yunzai') {
+      root = `${this._path}/`
+    } else if (root === 'yaya') {
+      root = `${this._path}/plugins/yaya-plugin/`
+    } else {
+      root = `${this._path}/plugins/${root}/`
     }
-    return { ...defaultConfig, ...userConfig }
+    return root
+  }
+
+  /**
+   * 根据指定的path依次检查与创建目录
+   * @param path 路径
+   * @param root 跟目录
+   * @param includeFile
+   */
+  createDir (path = '', root = '', includeFile = false) {
+    root = this.getRoot(root)
+    const pathList = path.split('/')
+    let nowPath = root
+    pathList.forEach((name, idx) => {
+      name = name.trim()
+      if (!includeFile && idx <= pathList.length - 1) {
+        nowPath += name + '/'
+        if (name) {
+          if (!fs.existsSync(nowPath)) {
+            fs.mkdirSync(nowPath)
+          }
+        }
+      }
+    })
+  }
+
+  /**
+   * 读取json
+   * @param file
+   * @param root
+   * @returns {{}|any}
+   */
+  readJSON (file = '', root = '') {
+    root = this.getRoot(root)
+    if (fs.existsSync(`${root}/${file}`)) {
+      try {
+        return JSON.parse(fs.readFileSync(`${root}/${file}`, 'utf8'))
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    return {}
+  }
+
+  /**
+   * 写入json
+   * @param cfg
+   * @param data
+   * @param root
+   * @param space
+   * @returns {*|void}
+   */
+  writeJSON (cfg, data, root = '', space = 2) {
+    if (arguments.length > 1) {
+      return this.writeJSON({
+        name: cfg,
+        data,
+        space,
+        root
+      })
+    }
+    // 检查并创建目录
+    const name = cfg.path ? (cfg.path + '/' + cfg.name) : cfg.name
+    this.createDir(name, cfg.root, true)
+    root = this.getRoot(cfg.root)
+    data = cfg.data
+    delete data._res
+    data = JSON.stringify(data, null, cfg.space || 2)
+    if (cfg.rn) {
+      data = data.replaceAll('\n', '\r\n')
+    }
+    return fs.writeFileSync(`${root}/${name}`, data)
+  }
+
+  /**
+   * 删除文件
+   * @param file 文件路径
+   * @param root 根目录
+   * @returns {boolean}
+   */
+  delFile (file, root = '') {
+    root = this.getRoot(root)
+    try {
+      if (fs.existsSync(`${root}/${file}`)) {
+        fs.unlinkSync(`${root}/${file}`)
+      }
+      return true
+    } catch (error) {
+      logger.error(`文件删除失败：${error}`)
+    }
+    return false
+  }
+
+  /**
+   * 读取配置
+   * @param key
+   * @returns {Promise<{diyCfg: (*|{}), sysCfg: (*|{})}>}
+   */
+  async importCfg (key) {
+    const sysCfg = await this.importModule(`defSet/help/${key}.js`)
+    let diyCfg = await this.importModule(`config/help/${key}.js`)
+    if (diyCfg === undefined) {
+      console.error(this.setname, `: config/${key}.js无效，已忽略`)
+      console.error(`如需配置请复制defSet/help/${key}.js为config/help/${key}.js`)
+      diyCfg = {}
+    }
+    if (diyCfg) {
+      console.log('用户配置')
+      return diyCfg
+    } else {
+      console.log('默认配置')
+      return sysCfg
+    }
+  }
+
+  /**
+   * 返回配置
+   * @param file
+   * @returns {Promise<*|{}|{}>}
+   */
+  async importModule (file) {
+    if (!/\.js$/.test(file)) {
+      file = file + '.js'
+    }
+    if (fs.existsSync(`${this._path}/plugins/${this.setname}/${file}`)) {
+      try {
+        const data = await import(`file://${this._path}/plugins/${this.setname}/${file}`)
+        return data || {}
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    return {}
   }
 
   // 初始化配置

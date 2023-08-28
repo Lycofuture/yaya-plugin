@@ -4,5 +4,8 @@
   "author": "Lycofuture",
   "description": "Bot Plugin",
   "type": "module",
-  "dependencies": {}
+  "dependencies": {
+    "icqq": "^0.5.2",
+    "lodash": "^4.17.21"
+  }
 }
