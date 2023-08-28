@@ -1,0 +1,31 @@
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+name: release-please
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          token: ${{secrets.nve_TOKEN}}
+          release-type: node
+          #version-file: package.json
+         # command: release-please
+          #tag-separator: true
+          # group-pull-request-title-pattern: true
+          package-name: ${{ steps.package.outputs.name }}
+         # changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false}]'
+      - name: Upload Release Artifact
+        if: ${{ steps.release.outputs.release_created }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.nve_TOKEN }}
+        run:
+          gh release upload ${{ steps.release.outputs.tag_name }} ./artifact/some-build-artifact.zip
