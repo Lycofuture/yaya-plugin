@@ -1,9 +1,7 @@
 import plugin from '../../../lib/plugins/plugin.js'
-import puppeteer from '../../../lib/puppeteer/puppeteer.js'
 import Cfg from '../model/Cfg.js'
-import _ from 'lodash'
-import { Data } from '../../StarRail-plugin/components/index.js'
-import lodash from 'lodash'
+import fs from 'node:fs'
+import puppeteer from '../../../lib/puppeteer/puppeteer.js'
 
 export default class help extends plugin {
   constructor (e) {
@@ -21,37 +19,25 @@ export default class help extends plugin {
   }
 
   async help (e) {
-    const helpGroup = []
-    const {
-      diyCfg,
-      sysCfg
-    } = await Cfg.importCfg('help')
-    const helpConfig = lodash.defaults(diyCfg || {}, sysCfg)
-    const helpList = diyCfg || sysCfg
-    lodash.forEach(helpList, (group) => {
-      if (group.auth && group.auth === 'master' && !e.isMaster) {
-        return true
-      }
-
-      lodash.forEach(group.list, (help) => {
-        const icon = help.icon * 1
-        if (!icon) {
-          help.css = 'display:none'
-        } else {
-          const x = (icon - 1) % 10
-          const y = (icon - x - 1) / 10
-          help.css = `background-position:-${x * 50}px -${y * 50}px`
-        }
-      })
-
-      helpGroup.push(group)
-    })
-    const data = {
-      helpCfg: helpConfig,
-      helpGroup,
-      plugin: `./plugins/${Cfg.setname}/defSet/`,
-      tplFile: `${Cfg.getRoot('yaya')}/resources/html/help/help.html`
+    const dir = `./data/html/${Cfg.package.name}/help`
+    const colCount = Math.min(5, Math.max(3, 2))
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true })
     }
+    const help = await Cfg.importCfg('help', 'help')
+    const {
+      html,
+      css
+    } = Cfg.htmlPath('help', 'help')
+    const data = {
+      ...help,
+      css,
+      colCount,
+      saveId: 'help',
+      tplFile: html,
+      path: './help.png'
+    }
+    console.log(JSON.stringify(data, null, 2))
     const severity = await puppeteer.screenshot(Cfg.setname + '/help', data)
     console.log(severity)
   }

@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'path'
+import lodash from 'lodash'
 
 class Cfg {
   constructor () {
@@ -10,6 +11,7 @@ class Cfg {
     this.configPath = `./plugins/${this.setname}/config/`
     /** 初始化 **/
     this.initconfig()
+    this.htmlPath('help', 'help')
   }
 
   /**
@@ -17,7 +19,6 @@ class Cfg {
    * @returns {any}
    */
   get package () {
-    // if (this._path) return this._path
     this.data = JSON.parse(fs.readFileSync(`${this._path}/plugins/yaya-plugin/package.json`, 'utf8'))
     return this.data
   }
@@ -37,6 +38,21 @@ class Cfg {
    */
   get _path () {
     return process.cwd()
+  }
+
+  /**
+   * 返回模板路径
+   * @param app 功能
+   * @param name 文件名
+   * @returns {{css: string, html: string}}
+   */
+  htmlPath (app, name) {
+    const html = path.join(this.getRoot('yaya'), `resources/html/${app}/${name}.html`)
+    const css = path.join(this.getRoot('yaya'), `resources/html/${app}/${name}.css`)
+    return {
+      html,
+      css
+    }
   }
 
   /**
@@ -149,24 +165,19 @@ class Cfg {
 
   /**
    * 读取配置
+   * @param app
    * @param key
    * @returns {Promise<{diyCfg: (*|{}), sysCfg: (*|{})}>}
    */
-  async importCfg (key) {
-    const sysCfg = await this.importModule(`defSet/help/${key}.js`)
-    let diyCfg = await this.importModule(`config/help/${key}.js`)
+  async importCfg (app, key) {
+    const sysCfg = await this.importModule(`defSet/${app}/${key}.js`)
+    let diyCfg = await this.importModule(`config/${app}/${key}.js`)
     if (diyCfg === undefined) {
-      console.error(this.setname, `: config/${key}.js无效，已忽略`)
-      console.error(`如需配置请复制defSet/help/${key}.js为config/help/${key}.js`)
+      console.error(this.setname, `: config/${app}/${key}.js无效，已忽略`)
+      console.error(`如需配置请复制defSet/${app}/${key}.js为config/${app}/${key}.js`)
       diyCfg = {}
     }
-    if (diyCfg) {
-      console.log('用户配置')
-      return diyCfg
-    } else {
-      console.log('默认配置')
-      return sysCfg
-    }
+    return lodash.extend({}, sysCfg, diyCfg)
   }
 
   /**
