@@ -1,37 +1,45 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-cn">
 <head>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
-    <link rel="stylesheet" type="text/css" href="{{css}}"/>
-    <link rel="shortcut icon" href="#"/>
+    <meta charset="utf-8">
+    <meta content="width=device-width" name="viewport">
+    <link href="#" rel="shortcut icon"/>
+    <!--    <link as="font" href="./resources/font/HYWenHei-55W.ttf" rel="preload"-->
+    <!--          type="font/woff">-->
+    <link href="./help.css" rel="stylesheet" type="text/css"/>
+    <title>miao-plugin</title>
 </head>
-{{@headStyle}}
-
 <body>
-<div class="container" id="container">
-    <div class="head_box">
-        <div class="id_text">Yunzai-Bot</div>
-        <h2 class="day_text">你在干什么</h2>
-<!--        <img class="genshin_logo" src="{{pluResPath}}img/other/原神.png"/>-->
+<div class="container">
+    <div class="info-box">
+        <div class="head-box">
+            <div class="title">{{helpCfg.title}}</div>
+            <div class="label">{{helpCfg.subTitle|| Yunzai-Bot &#38; Miao-Plugin}}</div>
+        </div>
     </div>
-    {{each helpList val}}
-    <div class="data_box">
-        <div class="tab_lable">{{val.group}}</div>
-        <div class="list">
+    <div class="cont-box">
+        {{each helpList val}}
+        <div class="cont-center">
+            <div class="help-group">{{val.group}}</div>
+        </div>
+        <div class="help-table">
             {{each val.list item}}
-            <div class="item">
-<!--                <img class="icon" src="{{pluResPath}}img/icon/{{item.icon}}.png"/>-->
-                <div class="title">
-                    <div class="text">{{item.title}}</div>
-                    <div class="dec">{{item.desc}}</div>
+            <div class="tr">
+                <div class="td">
+                    <strong class="help-title">{{item.title}}</strong>
+                    <span class="help-desc">{{item.desc}}</span>
                 </div>
             </div>
             {{/each}}
         </div>
+        {{/each}
     </div>
-    {{/each}}
-    <div class="logo">Created By Yunzai-Bot</div>
+    <div class="copyright">
+        Created By Yunzai-Bot
+        <span class="version">3.0.0</span>
+        & yaya-Plugin
+        <span class="version">2.4.4</span>
+    </div>
 </div>
 </body>
 

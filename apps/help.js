@@ -15,7 +15,6 @@ export default class help extends plugin {
         fnc: 'help'
       }]
     })
-    this.help(e)
   }
 
   async help (e) {

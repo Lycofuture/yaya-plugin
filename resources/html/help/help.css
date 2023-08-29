@@ -1,154 +1,175 @@
 @font-face {
-    font-family: "tttgbnumber";
-    src: url("../../../../../resources/font/tttgbnumber.ttf");
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'HYWenHei-55W';
+    src: url("../fonst/HYWenHei-55W.ttf");
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    user-select: none;
+@font-face {
+    font-family: '华文中宋';
+    src: url("../fonst/华文中宋.TTF");
+}
+
+@font-face {
+    font-family: 'tttgbnumber';
+    src: url("../fonst/tttgbnumber.ttf");
 }
 
 body {
-    font-family: sans-serif;
-    font-size: 16px;
-    width: 830px;
-    color: #1e1f20;
-    transform: scale(1.5);
-    background: url("./theme/bake-1.jpg");
-    transform-origin: 0 0;
+    background-image: url(./theme/bake-1.jpg);
+    font-size: 18px;
 }
 
 .container {
-    width: 530px;
-    padding: 20px 15px 10px 15px;
-    /*background-color: rgba(255, 255, 255, 0.3);*/
+    background: rgb(0, 0, 0, 0);
+    margin: 1em;
+    width: auto;
+    padding: 1em;
+    /*背景大小*/
+    background-size: cover;
 }
 
-.head_box {
+.info-box {
+    /*元素所有四个边上的边距区域*/
+    margin: auto;
+    /*字体居中*/
+    text-align: center;
+    width: 500px;
+    height: 100px;
+}
+
+.info-box .head-box {
     border-radius: 15px;
-    font-family: tttgbnumber, serif;
     padding: 10px 20px;
     position: relative;
-    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 15%);
+    color: #fff;
+    margin-top: 5px;
 }
 
-.head_box .id_text {
-    font-size: 24px;
-}
-
-.head_box .day_text {
-    font-size: 20px;
-}
-
-/*.head_box .genshin_logo {*/
-/*    position: absolute;*/
-/*    top: -1px;*/
-/*    right: 15px;*/
-/*    width: 97px;*/
-/*}*/
-
-.base_info {
-    position: relative;
-    padding-left: 10px;
-}
-
-.uid {
+.info-box .head-box .title {
     font-family: tttgbnumber, serif;
+    font-size: 36px;
+    /* 阴影*/
+    text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
 }
 
-.data_box {
-    border-radius: 15px;
-    margin-top: 20px;
-    margin-bottom: 15px;
-    padding: 20px 0 5px 0;
-    background: rgba(255, 255, 255, 0.2);
+.info-box .head-box .label {
+    font-family: HYWenHei-55W, serif;
+    margin-top: 5px;
+    text-align: right;
+    background-image: linear-gradient(to right, #ff0000, orange, yellow, green, #00ff00, blue, purple);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.cont-box {
+    /*背景颜色*/
+    /*background: #888888;*/
+    background: rgba(255, 255, 255, 0.1);
+    /*添加滤镜*/
+    backdrop-filter: blur(1px);
+    /*边框半径*/
+    border-radius: 25px;
+    /*顶部边距*/
+    margin-top: 10px;
+    /*下边边距*/
+    margin-bottom: 20px;
+    /*溢出：隐藏*/
+    overflow: hidden;
+    /*盒子阴影*/
     box-shadow: 0 5px 10px 0 rgb(0 0 0 / 15%);
+    /*位置：相对*/
     position: relative;
+    /*边框：外凸*/
+    /*border-style: outset;*/
+    font-family: tttgbnumber, ui-serif;
 }
 
-.tab_lable {
-    position: absolute;
+.cont-center {
+    margin: auto;
+    width: 30%;
+    text-align: center;
+    padding: 10px;
+}
+
+.cont-center .help-group {
+    /*位置:静态*/
+    position: static;
     top: -10px;
     left: -8px;
-    background: #d4b98c;
-    color: #fff;
-    font-size: 14px;
-    padding: 3px 10px;
-    border-radius: 15px 0 15px 15px;
-    z-index: 20;
+    color: #00FF00;
+    text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
+    border-radius: 0 0 15px 15px;
+    margin-top: -10px;
+    /*字体大小*/
+    font-size: 18px;
+    /*background: #1aa1d7;*/
+    /*添加阴影*/
+    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 0.2);
+    font-weight: bold;
+    padding: 15px 15px 10px 20px;
 }
 
-/*.data_line {*/
-/*    display: flex;*/
-/*    justify-content: space-around;*/
-/*    margin-bottom: 14px;*/
-/*}*/
 
-/*.data_line_item {*/
-/*    width: 100px;*/
-/*    text-align: center;*/
-/*    !*margin: 0 20px;*!*/
-/*}*/
-
-/*.num {*/
-/*    font-family: tttgbnumber, serif;*/
-/*    font-size: 24px;*/
-/*}*/
-
-/*.data_box .lable {*/
-/*    font-size: 14px;*/
-/*    color: #7f858a;*/
-/*    line-height: 1;*/
-/*    margin-top: 3px;*/
-/*}*/
-
-.list {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-}
-
-.list .item {
-    width: 153px;
-    display: flex;
-    align-items: center;
-    /*background: #f1f1f1;*/
-    padding: 8px 6px 8px 6px;
-    border-radius: 8px;
-    margin: 0 0 10px 10px;
-}
-
-/*.list .item .icon {*/
-/*    width: 24px;*/
-/*    height: 24px;*/
-/*    background-repeat: no-repeat;*/
-/*    background-size: 100% 100%;*/
-/*    position: relative;*/
-/*    flex-shrink: 0;*/
-/*}*/
-
-.list .item .title {
-    font-size: 16px;
-    margin-left: 6px;
-    line-height: 20px;
-}
-
-.list .item .title .text{
-  white-space: nowrap;
-}
-.list .item .title .dec {
-    font-size: 12px;
-    color: #999;
-    margin-top: 2px;
-}
-
-.logo {
-    font-size: 14px;
-    font-family: "tttgbnumber", serif;
+.help-table {
+    /*背景颜色*/
+    /*background: chocolate;*/
     text-align: center;
-    color: #7994a7;
+    border-collapse: collapse;
+    margin: 0;
+    border-radius: 0 0 10px 10px;
+    display: table;
+    overflow: hidden;
+    width: 100%;
+    color: #fff;
+    text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
+
+}
+
+.help-table .tr {
+    display: table-row;
+}
+
+.help-table .td {
+    font-size: 14px;
+    display: table-cell;
+    /*网格*/
+    /*box-shadow: 0 0 1px 0 #888 inset;*/
+    /*嵌入网格*/
+    border-style: inset;
+    padding: 12px 0 12px 50px;
+    line-height: 24px;
+    position: relative;
+    text-align: left;
+}
+
+.help-table .tr:last-child .td {
+    padding-bottom: 12px;
+}
+
+.help-table .th {
+    background: rgba(34, 41, 51, 0.5);
+}
+
+.help-title {
+    display: block;
+    color: #d3bc8e;
+    text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.help-desc {
+    display: block;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.copyright {
+    /*字体居中*/
+    text-align: center;
+}
+
+.copyright .version {
+    font-family: HYWenHei-55W, serif;
 }
