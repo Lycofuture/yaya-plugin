@@ -5,12 +5,12 @@
 
 // 帮助配置
 export const helpCfg = {
-  title: '图鉴帮助', // 帮助标题
+  title: '丫丫帮助', // 帮助标题
   subTitle: 'Yunzai-Bot & yaya-plugin' // 帮助副标题
 }
 export const helpList = [{
-  group: '信息查询',
+  group: '指令测试',
   list: [{
-    title: '#角色图鉴', desc: '目前已知原神角色概况'
+    title: '#点赞', desc: '给我qq点赞'
   }]
 }]
