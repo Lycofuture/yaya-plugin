@@ -14,23 +14,24 @@
 }
 
 body {
-    background-image: url(./theme/bake-1.jpg);
+    background-image: url(plugins/yaya-plugin/resources/html/help/theme/bake-1.jpg);
     font-size: 18px;
 }
 
 .container {
-    background: rgb(0, 0, 0, 0);
-    margin: 1em;
-    width: auto;
-    padding: 1em;
-    /*背景大小*/
+    height: auto;
+    margin: auto;
+    position: sticky;
+    left: 25px;
+    right: 25px;
+    top: 10px;
+    bottom: 15px;
+    padding: 0;
     background-size: cover;
 }
 
 .info-box {
-    /*元素所有四个边上的边距区域*/
     margin: auto;
-    /*字体居中*/
     text-align: center;
     width: 500px;
     height: 100px;
@@ -47,7 +48,6 @@ body {
 .info-box .head-box .title {
     font-family: tttgbnumber, serif;
     font-size: 36px;
-    /* 阴影*/
     text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
 }
 
@@ -63,110 +63,98 @@ body {
 }
 
 .cont-box {
-    /*背景颜色*/
-    /*background: #888888;*/
     background: rgba(255, 255, 255, 0.1);
-    /*添加滤镜*/
     backdrop-filter: blur(1px);
-    /*边框半径*/
     border-radius: 25px;
-    /*顶部边距*/
-    margin-top: 10px;
-    /*下边边距*/
-    margin-bottom: 20px;
-    /*溢出：隐藏*/
+    margin: 15px 10px;
     overflow: hidden;
-    /*盒子阴影*/
-    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 15%);
-    /*位置：相对*/
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
     position: relative;
-    /*边框：外凸*/
-    /*border-style: outset;*/
+    border-style: outset;
+    border-width: 1px;
+    border-color: #1aa1d7;
     font-family: tttgbnumber, ui-serif;
 }
 
-.cont-center {
+.cont-box .cont-center {
     margin: auto;
-    width: 30%;
+    width: 33.33%;
     text-align: center;
     padding: 10px;
 }
 
-.cont-center .help-group {
-    /*位置:静态*/
+.cont-box .cont-center .help-group {
     position: static;
-    top: -10px;
-    left: -8px;
-    color: #00FF00;
-    text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
+    color: lightgoldenrodyellow;
+    text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.5);
     border-radius: 0 0 15px 15px;
     margin-top: -10px;
-    /*字体大小*/
     font-size: 18px;
-    /*background: #1aa1d7;*/
-    /*添加阴影*/
-    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 0.2);
+    box-shadow: 0 5px 10px 0 rgba(0 0 0 / 0.2);
     font-weight: bold;
-    padding: 15px 15px 10px 20px;
+    padding: 10px 15px;
+    border-style: inset;
+    border-width: 2px;
+    border-color: transparent rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.2);
+    background: rgba(225, 225, 225, 0.11);
 }
 
-
-.help-table {
-    /*背景颜色*/
-    /*background: chocolate;*/
+.cont-box .help-table {
     text-align: center;
     border-collapse: collapse;
-    margin: 0;
+    margin: 10px auto;
+    padding: 10px;
+    list-style: inside;
     border-radius: 0 0 10px 10px;
     display: table;
-    overflow: hidden;
     width: 100%;
     color: #fff;
-    text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
-
+    text-shadow: #000 1px 0 0, #000 0 1px 0, #000 -1px 0 0, #000 0 -1px 0;
 }
 
-.help-table .tr {
+.cont-box .help-table .tr {
     display: table-row;
 }
 
-.help-table .td {
+.cont-box .help-table .tr:last-child {
+    padding-bottom: 12px;
+}
+
+.cont-box .help-table .tr .td {
     font-size: 14px;
+    width: 200px;
+    height: 50px;
     display: table-cell;
-    /*网格*/
-    /*box-shadow: 0 0 1px 0 #888 inset;*/
-    /*嵌入网格*/
-    border-style: inset;
-    padding: 12px 0 12px 50px;
+    padding: 5px;
     line-height: 24px;
     position: relative;
     text-align: left;
 }
 
-.help-table .tr:last-child .td {
-    padding-bottom: 12px;
+.cont-box .help-table .tr .th {
+    overflow: hidden;
+    padding: 10px;
+    border-style: outset;
+    border-radius: 25px;
+    border-width: 1px;
+    border-color: #1aa1d7;
+    background: rgba(34, 41, 51, 0);
 }
 
-.help-table .th {
-    background: rgba(34, 41, 51, 0.5);
-}
-
-.help-title {
+.cont-box .help-table .tr .th .help-title {
     display: block;
     color: #d3bc8e;
-    text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
     font-size: 16px;
     line-height: 24px;
 }
 
-.help-desc {
+.cont-box .help-table .tr .th .help-desc {
     display: block;
     font-size: 13px;
     line-height: 18px;
 }
 
 .copyright {
-    /*字体居中*/
     text-align: center;
 }
 
