@@ -1,150 +1,138 @@
 @font-face {
-  font-family: 'HYWenHei-55W';
-  src: url("../fonst/HYWenHei-55W.ttf");
-}
-
-@font-face {
-  font-family: '华文中宋';
-  src: url("../fonst/华文中宋.TTF");
-}
-
-@font-face {
   font-family: 'tttgbnumber';
   src: url("../fonst/tttgbnumber.ttf");
 }
 
 body {
   background-image: url(./theme/bake-1.jpg);
+  font-family: tttgbnumber, serif;
   font-size: 18px;
-}
 
-.container {
-  background: rgb(0, 0, 0, 0);
-  margin: 1em;
-  width: auto;
-  padding: 1em;
-  background-size: cover;
-}
 
-.info-box {
-  margin: auto;
-  text-align: center;
-  width: 500px;
-  height: 100px;
+  .container {
+    background: rgba(0, 0, 0, 0);
+    margin: 0;
+    width: auto;
+    padding: 1px;
+    background-size: cover;
 
-  .head-box {
-    border-radius: 15px;
-    padding: 10px 20px;
-    position: relative;
-    color: #fff;
-    margin-top: 5px;
 
-    .title {
-      font-family: tttgbnumber, serif;
-      font-size: 36px;
-      text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
+    .info-box {
+      margin: auto;
+      text-align: center;
+      width: 500px;
+      height: 100px;
+
+      .head-box {
+        border-radius: 15px;
+        padding: 10px 20px;
+        position: relative;
+        color: #fff;
+        margin-top: 5px;
+
+        .title {
+          font-size: 36px;
+          text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
+        }
+
+        .label {
+          margin-top: 5px;
+          text-align: right;
+          background-image: linear-gradient(to right, #ff0000, orange, yellow, green, #00ff00, blue, purple);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+      }
     }
 
-    .label {
-      font-family: HYWenHei-55W, serif;
-      margin-top: 5px;
-      text-align: right;
-      background-image: linear-gradient(to right, #ff0000, orange, yellow, green, #00ff00, blue, purple);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-fill-color: transparent;
+    .cont-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(1px);
+      border-radius: 25px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 10px 0 rgb(0 0 0 / 15%);
+      position: relative;
+
+      .cont-center {
+        margin: auto;
+        width: 30%;
+        text-align: center;
+        padding: 10px;
+
+        .help-group {
+          position: static;
+          color: lightgoldenrodyellow;
+          top: -10px;
+          left: -8px;
+          //color: #00ff00;
+          text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
+          border-radius: 0 0 15px 15px;
+          margin-top: -10px;
+          font-size: 18px;
+          box-shadow: 0 5px 10px 0 rgb(0 0 0 / 0.2);
+          font-weight: bold;
+          padding: 15px 15px 10px 20px;
+        }
+      }
+
+      .help-table {
+        text-align: center;
+        border-collapse: collapse;
+        margin: 0;
+        border-radius: 0 0 10px 10px;
+        display: table;
+        overflow: hidden;
+        width: 100%;
+        color: #fff;
+        //text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
+
+        .tr {
+          display: table-row;
+          .td {
+            font-size: 14px;
+            display: table-cell;
+            padding: 10px;
+            //line-height: 24px;
+            position: relative;
+            text-align: left;
+
+            .th {
+              overflow: hidden;
+              padding: 10px;
+              border-style: outset;
+              border-radius: 25px;
+              border-width: 2px;
+              border-color: transparent;
+              box-shadow: 1px 2px 5px  rgba(0,0,0,0.5);
+              .help-title {
+                display: block;
+                color: #d3bc8e;
+                text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
+                font-size: 16px;
+                line-height: 24px;
+              }
+
+              .help-desc {
+                display: block;
+                font-size: 13px;
+                line-height: 18px;
+              }
+            }
+          }
+        }
+      }
     }
-  }
-}
 
-.cont-box {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(1px);
-  border-radius: 25px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  overflow: hidden;
-  box-shadow: 0 5px 10px 0 rgb(0 0 0 / 15%);
-  position: relative;
-  font-family: tttgbnumber, ui-serif;
-}
+    .copyright {
+      text-align: center;
 
-.cont-center {
-  margin: auto;
-  width: 30%;
-  text-align: center;
-  padding: 10px;
-
-  .help-group {
-    position: static;
-    top: -10px;
-    left: -8px;
-    color: #00ff00;
-    text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
-    border-radius: 0 0 15px 15px;
-    margin-top: -10px;
-    font-size: 18px;
-    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 0.2);
-    font-weight: bold;
-    padding: 15px 15px 10px 20px;
-  }
-}
-
-.help-table {
-  text-align: center;
-  border-collapse: collapse;
-  margin: 0;
-  border-radius: 0 0 10px 10px;
-  display: table;
-  overflow: hidden;
-  width: 100%;
-  color: #fff;
-  text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
-
-  .tr {
-    display: table-row;
-
-    &:last-child {
-      .td {
-        padding-bottom: 12px;
+      .version {
+        font-size: 18px;
       }
     }
   }
-
-  .td {
-    font-size: 14px;
-    display: table-cell;
-    border-style: inset;
-    padding: 12px 0 12px 50px;
-    line-height: 24px;
-    position: relative;
-    text-align: left;
-  }
-
-  .th {
-    background: rgba(34, 41, 51, 0.5);
-  }
 }
 
-.help-title {
-  display: block;
-  color: #d3bc8e;
-  text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
-  font-size: 16px;
-  line-height: 24px;
-}
-
-.help-desc {
-  display: block;
-  font-size: 13px;
-  line-height: 18px;
-}
-
-.copyright {
-  text-align: center;
-
-  .version {
-    font-family: HYWenHei-55W, serif;
-  }
-}
