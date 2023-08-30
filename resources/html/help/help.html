@@ -1,48 +1,43 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width" name="viewport">
-    <link href="#" rel="shortcut icon"/>
-    <!--    <link as="font" href="./resources/font/HYWenHei-55W.ttf" rel="preload"-->
-    <!--          type="font/woff">-->
-<!--    <link href="./help.less" rel="stylesheet/less" type="text/css"/>-->
-    <link rel="stylesheet/less" type="text/css" href="./help.less" />
-    <script src="https://cdn.jsdelivr.net/npm/less@4" ></script>
-    <title>miao-plugin</title>
-</head>
-<body>
-<div class="container">
-    <div class="info-box">
-        <div class="head-box">
-            <div class="title">{{helpCfg.title}}</div>
-            <div class="label">{{helpCfg.subTitle|| Yunzai-Bot &#38; Miao-Plugin}}</div>
-        </div>
-    </div>
-    <div class="cont-box">
-        {{each helpList val}}
-        <div class="cont-center">
-            <div class="help-group">{{val.group}}</div>
-        </div>
-        <div class="help-table">
-            {{each val.list item}}
-            <div class="tr">
-                <div class="td">
-                    <strong class="help-title">{{item.title}}</strong>
-                    <span class="help-desc">{{item.desc}}</span>
-                </div>
-            </div>
-            {{/each}}
-        </div>
-        {{/each}
-    </div>
-    <div class="copyright">
-        Created By Yunzai-Bot
-        <span class="version">3.0.0</span>
-        & yaya-Plugin
-        <span class="version">1.0.0</span>
+{{extend defaultLayout}}
+
+{{block 'main'}}
+
+<div class="info-box">
+    <div class="head-box">
+        <div class="title">{{helpCfg.title||"使用帮助"}}</div>
+        <div class="label">{{helpCfg.subTitle || "Yunzai-Bot & yaya-Plugin"}}</div>
     </div>
 </div>
-</body>
-
-</html>
+{{each helpList group}}
+{{set len = group?.list?.length || 0 }}
+<div class="cont-box">
+    <div class="cont-center">
+        <div class="help-group">{{group.group}}</div>
+    </div>
+    {{if len > 0}}
+    <div class="help-table">
+        <div class="tr">
+            {{each group.list help idx}}
+            <div class="td">
+                <div class="th">
+                    <strong class="help-title">{{help.title}}</strong>
+                    <span class="help-desc">{{help.desc}}</span>
+                </div>
+            </div>
+            {{if idx%colCount === colCount-1 && idx>0 && idx< len-1}}
+        </div>
+        <div class="tr">
+            {{/if}}
+            {{/each}}
+            <% for(let i=(len-1)%colCount; i< colCount-1 ; i++){ %>
+            <div class="td"></div>
+            <% } %>
+        </div>
+    </div>
+    {{/if}}
+</div>
+{{/each}}
+<div class="copyright">{{plugin}}
+    <div class="version">{{version}}</div>
+</div>
+{{/block}}

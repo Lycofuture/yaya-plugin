@@ -1,11 +1,11 @@
 @font-face {
-  font-family: 'tttgbnumber';
-  src: url("../fonst/tttgbnumber.ttf");
+  font-family: 'HYWH-65W';
+  src: url("../../common/font/HYWH-65W.ttf");
 }
 
 body {
   background-image: url(./theme/bake-1.jpg);
-  font-family: tttgbnumber, serif;
+  font-family: HYWH-65W, serif;
   font-size: 18px;
 
 
@@ -20,7 +20,7 @@ body {
     .info-box {
       margin: auto;
       text-align: center;
-      width: 500px;
+      width: auto;
       height: 100px;
 
       .head-box {
@@ -36,7 +36,7 @@ body {
         }
 
         .label {
-          margin-top: 5px;
+          margin: 5px 50px 0 0;
           text-align: right;
           background-image: linear-gradient(to right, #ff0000, orange, yellow, green, #00ff00, blue, purple);
           -webkit-background-clip: text;
@@ -50,8 +50,7 @@ body {
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(1px);
       border-radius: 25px;
-      margin-top: 10px;
-      margin-bottom: 15px;
+      margin: 10px 30px 15px;
       overflow: hidden;
       box-shadow: 0 5px 10px 0 rgb(0 0 0 / 15%);
       position: relative;
@@ -64,17 +63,22 @@ body {
 
         .help-group {
           position: static;
-          color: lightgoldenrodyellow;
+          color: #808080;
           top: -10px;
           left: -8px;
           //color: #00ff00;
-          text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
+          //字体轮廓大小
+          //-webkit-text-stroke-width: 0.5px;
+          //字体轮廓颜色
+          //-webkit-text-stroke-color: black;
+          text-shadow: 0 0 1px #000, 3px 2px 3px rgba(255, 255, 255, 0.9);
           border-radius: 0 0 15px 15px;
           margin-top: -10px;
           font-size: 18px;
           box-shadow: 0 5px 10px 0 rgb(0 0 0 / 0.2);
           font-weight: bold;
           padding: 15px 15px 10px 20px;
+          background: wheat;
         }
       }
 
@@ -91,6 +95,7 @@ body {
 
         .tr {
           display: table-row;
+
           .td {
             font-size: 14px;
             display: table-cell;
@@ -98,6 +103,7 @@ body {
             //line-height: 24px;
             position: relative;
             text-align: left;
+            width: 33.33%;
 
             .th {
               overflow: hidden;
@@ -105,8 +111,12 @@ body {
               border-style: outset;
               border-radius: 25px;
               border-width: 2px;
+              height: 50px;
+              display: block;
               border-color: transparent;
-              box-shadow: 1px 2px 5px  rgba(0,0,0,0.5);
+              box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+              background: lightslategrey;
+
               .help-title {
                 display: block;
                 color: #d3bc8e;
