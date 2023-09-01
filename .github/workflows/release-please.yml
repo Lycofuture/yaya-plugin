@@ -13,3 +13,5 @@ jobs:
           release-type: node
           token: ${{secrets.nve_TOKEN}}
           package-name: release-please-action
+          pull-request-title-pattern: "chore(release): ${version}"
+          pull-request-header: ":robot: Merge this PR to release a new version"
