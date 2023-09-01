@@ -1,41 +1,23 @@
-name: .NET Core Release
-
+name: Release
 on:
   push:
     branches: [ main ]
-    # Sequence of patterns matched against refs/tags
-    tags:
-      - "v*" # Push events to matching v*, i.e. v1.0, v20.15.10
-
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
+    name: Release
+    runs-on: windows-latest
     steps:
-    - name: Checkout source
-      uses: actions/checkout@v2
-      
+    - uses: actions/checkout@v1
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.101
-      
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.nve_TOKEN }}
+        dotnet-version: 5.0.x
+    - name: Create GitHub release
+      uses: marvinpinto/action-automatic-releases@latest
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        body: TODO New Release.
-        draft: false
+        repo_token: "${{ secrets.nve_TOKEN }}"
+        automatic_release_tag: ${{ env.ReleaseVersion }}
+        title: ${{ env.ReleaseVersion }}
         prerelease: false
-        
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.nve_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        files: |
+          artifacts/packages/*
