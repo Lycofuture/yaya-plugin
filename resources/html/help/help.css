@@ -1,163 +1,109 @@
 @font-face {
-    font-family: 'HYWenHei-55W';
-    src: url("../fonst/HYWenHei-55W.ttf");
+  font-family: 'HYWH-65W';
+  src: url("../../common/font/HYWH-65W.ttf");
 }
-
-@font-face {
-    font-family: '华文中宋';
-    src: url("../fonst/华文中宋.TTF");
-}
-
-@font-face {
-    font-family: 'tttgbnumber';
-    src: url("../fonst/tttgbnumber.ttf");
-}
-
 body {
-    background-image: url(plugins/yaya-plugin/resources/html/help/theme/bake-1.jpg);
-    font-size: 18px;
+  background-image: url(./theme/bake-1.jpg);
+  font-family: HYWH-65W, serif;
+  font-size: 18px;
 }
-
-.container {
-    height: auto;
-    margin: auto;
-    position: sticky;
-    left: 25px;
-    right: 25px;
-    top: 10px;
-    bottom: 15px;
-    padding: 0;
-    background-size: cover;
+body .container .info-box {
+  text-align: center;
+  height: 100px;
 }
-
-.info-box {
-    margin: auto;
-    text-align: center;
-    width: 500px;
-    height: 100px;
+body .container .info-box .head-box {
+  border-radius: 15px;
+  padding: 10px 20px;
+  position: relative;
+  color: #fff;
+  margin-top: 5px;
 }
-
-.info-box .head-box {
-    border-radius: 15px;
-    padding: 10px 20px;
-    position: relative;
-    color: #fff;
-    margin-top: 5px;
+body .container .info-box .head-box .title {
+  font-size: 36px;
+  text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
 }
-
-.info-box .head-box .title {
-    font-family: tttgbnumber, serif;
-    font-size: 36px;
-    text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
+body .container .info-box .head-box .label {
+  margin: 5px 50px 0 0;
+  text-align: right;
+  background-image: linear-gradient(to right, #ff0000, orange, yellow, green, #00ff00, blue, purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-
-.info-box .head-box .label {
-    font-family: HYWenHei-55W, serif;
-    margin-top: 5px;
-    text-align: right;
-    background-image: linear-gradient(to right, #ff0000, orange, yellow, green, #00ff00, blue, purple);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
+body .container .cont-box {
+  border-radius: 25px;
+  margin: 10px 30px 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
+  position: relative;
+  backdrop-filter: blur(5px);
 }
-
-.cont-box {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(1px);
-    border-radius: 25px;
-    margin: 15px 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
-    position: relative;
-    border-style: outset;
-    border-width: 1px;
-    border-color: #1aa1d7;
-    font-family: tttgbnumber, ui-serif;
+body .container .cont-box .cont-center {
+  margin: auto;
+  width: 30%;
+  text-align: center;
+  padding: 10px;
 }
-
-.cont-box .cont-center {
-    margin: auto;
-    width: 33.33%;
-    text-align: center;
-    padding: 10px;
+body .container .cont-box .cont-center .help-group {
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(105, 105, 105, 0.5);
+  border-radius: 0 0 15px 15px;
+  margin-top: -10px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.9);
+  border-style: inset;
+  border-top: transparent;
+  padding: 15px 15px 10px 20px;
 }
-
-.cont-box .cont-center .help-group {
-    position: static;
-    color: lightgoldenrodyellow;
-    text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.5);
-    border-radius: 0 0 15px 15px;
-    margin-top: -10px;
-    font-size: 18px;
-    box-shadow: 0 5px 10px 0 rgba(0 0 0 / 0.2);
-    font-weight: bold;
-    padding: 10px 15px;
-    border-style: inset;
-    border-width: 2px;
-    border-color: transparent rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.2);
-    background: rgba(225, 225, 225, 0.11);
+body .container .cont-box .help-table {
+  text-align: center;
+  border-collapse: collapse;
+  margin: 0;
+  border-radius: 0 0 10px 10px;
+  display: table;
+  overflow: hidden;
+  width: 100%;
+  color: #fff;
 }
-
-.cont-box .help-table {
-    text-align: center;
-    border-collapse: collapse;
-    margin: 10px auto;
-    padding: 10px;
-    list-style: inside;
-    border-radius: 0 0 10px 10px;
-    display: table;
-    width: 100%;
-    color: #fff;
-    text-shadow: #000 1px 0 0, #000 0 1px 0, #000 -1px 0 0, #000 0 -1px 0;
+body .container .cont-box .help-table .tr {
+  display: table-row;
 }
-
-.cont-box .help-table .tr {
-    display: table-row;
+body .container .cont-box .help-table .tr .td {
+  font-size: 14px;
+  display: table-cell;
+  padding: 10px;
+  position: relative;
+  text-align: left;
+  width: 33.33%;
 }
-
-.cont-box .help-table .tr:last-child {
-    padding-bottom: 12px;
+body .container .cont-box .help-table .tr .td .th {
+  overflow: hidden;
+  padding: 10px;
+  border-style: outset;
+  border-radius: 25px;
+  border-width: 2px;
+  height: 50px;
+  display: block;
+  border-color: rgba(0, 0, 0, 0.5);
+  border-top: transparent;
+  outline: 2px ridge rgba(0, 0, 0, 0.3);
 }
-
-.cont-box .help-table .tr .td {
-    font-size: 14px;
-    width: 200px;
-    height: 50px;
-    display: table-cell;
-    padding: 5px;
-    line-height: 24px;
-    position: relative;
-    text-align: left;
+body .container .cont-box .help-table .tr .td .th .help-title {
+  display: block;
+  color: #0000CD;
+  font-size: 16px;
+  line-height: 24px;
 }
-
-.cont-box .help-table .tr .th {
-    overflow: hidden;
-    padding: 10px;
-    border-style: outset;
-    border-radius: 25px;
-    border-width: 1px;
-    border-color: #1aa1d7;
-    background: rgba(34, 41, 51, 0);
+body .container .cont-box .help-table .tr .td .th .help-desc {
+  color: #00FF00;
+  display: block;
+  font-size: 13px;
+  line-height: 18px;
 }
-
-.cont-box .help-table .tr .th .help-title {
-    display: block;
-    color: #d3bc8e;
-    font-size: 16px;
-    line-height: 24px;
+body .container .copyright {
+  text-align: center;
 }
-
-.cont-box .help-table .tr .th .help-desc {
-    display: block;
-    font-size: 13px;
-    line-height: 18px;
+body .container .copyright .version {
+  display: inline-block;
 }
-
-.copyright {
-    text-align: center;
-}
-
-.copyright .version {
-    font-family: HYWenHei-55W, serif;
-}
+/*# sourceMappingURL=help.css.map */

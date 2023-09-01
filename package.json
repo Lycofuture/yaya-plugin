@@ -5,7 +5,6 @@
   "description": "Bot Plugin",
   "type": "module",
   "dependencies": {
-    "icqq": "^0.5.2",
-    "lodash": "^4.17.21"
+    "icqq": "^0.5.2"
   }
 }
