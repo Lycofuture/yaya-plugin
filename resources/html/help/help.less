@@ -1,165 +1,127 @@
 @font-face {
-  font-family: 'HYWenHei-55W';
-  src: url("../fonst/HYWenHei-55W.ttf");
-}
-
-@font-face {
-  font-family: '华文中宋';
-  src: url("../fonst/华文中宋.TTF");
-}
-
-@font-face {
-  font-family: 'tttgbnumber';
-  src: url("../fonst/tttgbnumber.ttf");
+  font-family: 'HYWH-65W';
+  src: url("../../common/font/HYWH-65W.ttf");
 }
 
 body {
-  background-image: url(plugins/yaya-plugin/resources/html/help/theme/bake-1.jpg);
+  background-image: url(./theme/bake-1.jpg);
+  font-family: HYWH-65W, serif;
   font-size: 18px;
-}
 
-.container {
-  height: auto;
-  margin: auto;
-  position: sticky;
-  left: 25px;
-  right: 25px;
-  top: 10px;
-  bottom: 15px;
-  padding: 0;
-  //背景：封面
-  background-size: cover;
-}
 
-.info-box {
-  margin: auto;
-  text-align: center;
-  width: 500px;
-  height: 100px;
+  .container {
+    padding: 1px;
 
-  .head-box {
-    border-radius: 15px;
-    padding: 10px 20px;
-    position: relative;
-    color: #fff;
-    margin-top: 5px;
+    .info-box {
+      text-align: center;
+      margin-top: 20px;
 
-    .title {
-      font-family: tttgbnumber, serif;
-      font-size: 36px;
-      text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
+      .head-box {
+        color: #fff;
+
+        .title {
+          font-size: 36px;
+          text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.9);
+        }
+
+        .label {
+          margin: 5px 50px 0 0;
+          text-align: right;
+          //颜色渐变
+          background-image: linear-gradient(to right, #ff0000, orange, yellow, green, #00ff00, blue, purple);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+      }
     }
 
-    .label {
-      font-family: HYWenHei-55W, serif;
-      margin-top: 5px;
-      text-align: right;
-      background-image: linear-gradient(to right, #ff0000, orange, yellow, green, #00ff00, blue, purple);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-fill-color: transparent;
-    }
-  }
-}
+    .cont-box {
+      //圆角
+      border-radius: 25px;
+      //四边边距
+      margin: 10px 30px 15px;
+      //溢出隐藏
+      overflow: hidden;
+      //背景模糊
+      backdrop-filter: blur(5px);
 
-.cont-box {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(1px);
-  border-radius: 25px;
-  margin: 15px 10px;
-  overflow: hidden;
-  box-shadow: 0 5px 10px 0 rgb(0 0 0 / 15%);
-  position: relative;
-  border-style: outset;
-  border-width: 1px;
-  border-color: #1aa1d7;
-  font-family: tttgbnumber, ui-serif;
+      .cont-center {
+        margin: auto;
+        width: 30%;
+        text-align: center;
 
-  .cont-center {
-    margin: auto;
-    width: 33.33%;
-    text-align: center;
-    padding: 10px;
-
-    .help-group {
-      position: static;
-      color: lightgoldenrodyellow;
-      text-shadow: 0 0 1px #000, 3px 2px 3px rgba(0, 0, 0, 0.5);
-      border-radius: 0 0 15px 15px;
-      margin-top: -10px;
-      font-size: 18px;
-      box-shadow: 0 5px 10px 0 rgba(0 0 0 / 0.2);
-      font-weight: bold;
-      padding: 10px 15px;
-      border-style: inset;
-      border-width: 2px;
-      border-color: transparent rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.2);
-      background: rgba(225, 225, 225, 0.11);
-    }
-  }
-
-
-  .help-table {
-    text-align: center;
-    border-collapse: collapse;
-    margin: 10px auto;
-    padding: 10px;
-    list-style: inside;
-    border-radius: 0 0 10px 10px;
-    display: table;
-    width: 100%;
-    color: #fff;
-    text-shadow: #000 1px 0 0, #000 0 1px 0, #000 -1px 0 0, #000 0 -1px 0;
-
-    .tr {
-      display: table-row;
-
-      &:last-child {
-        padding-bottom: 12px;
+        .help-group {
+          color: #ffffff;
+          text-shadow: 1px 1px 2px rgba(105, 105, 105,0.5);
+          border-radius: 0 0 15px 15px;
+          margin-top: -10px;
+          //内部阴影
+          box-shadow: inset -1px -1px 10px 0 pxrgba(0,0,0,0.3);
+          border-color: rgba(0, 0, 0, 0.9);
+          border-style: inset;
+          border-top: transparent;
+          padding: 15px 15px 10px 20px;
+        }
       }
 
-      .td {
-        font-size: 14px;
-        width: 200px;
-        height: 50px;
-        display: table-cell;
-        padding: 5px;
-        line-height: 24px;
-        position: relative;
-        text-align: left;
-      }
-
-      .th {
+      .help-table {
+        text-align: center;
+        border-collapse: collapse;
+        margin: 0;
+        border-radius: 0 0 10px 10px;
+        display: table;
         overflow: hidden;
-        padding: 10px;
-        border-style: outset;
-        border-radius: 25px;
-        border-width: 1px;
-        border-color: #1aa1d7;
-        background: rgba(34, 41, 51, 0);
+        width: 100%;
+        color: #fff;
+        .tr {
+          display: table-row;
 
-        .help-title {
-          display: block;
-          color: #d3bc8e;
-          font-size: 16px;
-          line-height: 24px;
-        }
+          .td {
+            font-size: 14px;
+            display: table-cell;
+            padding: 10px;
+            position: relative;
+            text-align: left;
+            width: 33.33%;
 
-        .help-desc {
-          display: block;
-          font-size: 13px;
-          line-height: 18px;
+            .th {
+              overflow: hidden;
+              padding: 10px;
+              border-style: outset;
+              border-radius: 15px;
+              border-width: 2px;
+              height: 50px;
+              display: block;
+              //box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+              border-color: rgba(0, 0, 0, 0.5);
+              border-top: transparent;
+              outline: 2px ridge rgba(0, 0, 0, 0.3);
+              .help-title {
+                display: block;
+                color: #0000CD;
+                font-size: 16px;
+                line-height: 24px;
+              }
+
+              .help-desc {
+                color: #00FF00;
+                display: block;
+                font-size: 13px;
+                line-height: 18px;
+              }
+            }
+          }
         }
       }
     }
-  }
-}
 
-.copyright {
-  text-align: center;
+    .copyright {
+      text-align: center;
 
-  .version {
-    font-family: HYWenHei-55W, serif;
+      .version {
+        display: inline-block;
+      }
+    }
   }
 }
