@@ -22,8 +22,7 @@ export default class help extends plugin {
       const data = {
         ...config,
         saveId: 'html',
-        tplFile: config.html,
-        path: './help.png'
+        tplFile: config.html
       }
       const severity = await puppeteer.screenshot(Cfg.package.name, data)
       e.reply(severity)
