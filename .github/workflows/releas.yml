@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - main
-name: release-please
+name: release
 jobs:
   release-please:
     runs-on: ubuntu-latest
@@ -11,7 +11,7 @@ jobs:
         id: release
         with:
           release-type: node
-          token: ${{secrets.nve_TOKEN}}
+          token: ${{secrets.GITHUB_TOKEN}}
           package-name: release-please-action
           pull-request-title-pattern: "chore(release): ${version}"
           pull-request-header: ":robot: Merge this PR to release a new version"
