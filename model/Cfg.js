@@ -43,7 +43,7 @@ class Cfg {
      * @property {string} html 模板路径
      */
   async deploy () {
-    const yaya_path = `./plugins/${this.package.name}/resources/`
+    const yaya_path = `${this.pluginPath}resources/`
     const defaultLayout = `${yaya_path}common/layout/default.html`
     const html = `${yaya_path}html/help/help.html`
     const data = await import(`file://${this.defSetPath}help/help.js`)
