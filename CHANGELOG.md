@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/Lycofuture/yaya-plugin/compare/v1.0.0...v1.0.1) (2023-09-06)
+
+
+### Bug Fixes
+
+* Update Cfg.js ([fbb9c5b](https://github.com/Lycofuture/yaya-plugin/commit/fbb9c5b0d924b4acdbfd0f743b2f3cb3058f824b))
+
 ## 1.0.0 (2023-09-04)
 
 
