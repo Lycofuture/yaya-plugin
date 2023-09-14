@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/Lycofuture/yaya-plugin/compare/v1.0.1...v1.1.0) (2023-09-14)
+
+
+### Features
+
+* 增加米游社签到 ([7ab0a40](https://github.com/Lycofuture/yaya-plugin/commit/7ab0a401594cb903b8fb5ce285a635e8ca78d8fe))
+
 ## [1.0.1](https://github.com/Lycofuture/yaya-plugin/compare/v1.0.0...v1.0.1) (2023-09-06)
 
 
