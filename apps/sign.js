@@ -23,7 +23,7 @@ export default class sign extends plugin {
         const mysapi = new mihoyoapi()
         const yamlDataUrl = `${Cfg.package._path}/plugins/xiaoyao-cvs-plugin/data/yaml`;
         let file = `${yamlDataUrl}/${e.user_id}.yaml`
-        if(!fs.existsSync(file)) return false
+        if (!fs.existsSync(file)) return false
         let ck = fs.readFileSync(file, 'utf-8')
         ck = YAML.parse(ck)
         if (!ck) return false
@@ -59,7 +59,7 @@ export default class sign extends plugin {
             } else {
                 msg = this.gid(v) + ':' + '米游社签到遇到验证码，请稍后再试'
             }
-            await e.reply(msg)
+            await e.reply([segment.at(e.user_id), msg])
         }
     }
 
