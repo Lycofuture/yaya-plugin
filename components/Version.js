@@ -17,7 +17,7 @@ const getLine = function (line) {
     line = line.replace(/(^\s*\*|\r)/g, '')
     line = line.replace(/\s*`([^`]+`)/g, '<span class="cmd">$1')
     line = line.replace(/`\s*/g, '</span>')
-    line = line.replace(/\s*\*\*([^\*]+\*\*)/g, '<span class="strong">$1')
+    line = line.replace(/\s*\*\*([^\/*]+\*\*)/g, '<span class="strong">$1')
     line = line.replace(/\*\*\s*/g, '</span>')
     line = line.replace(/ⁿᵉʷ/g, '<span class="new"></span>')
     return line
@@ -75,16 +75,14 @@ try {
 const yunzaiVersion = packageJson.version
 const yunzainame = packageJson.name
 const isV3 = yunzaiVersion[0] === '3'
-function stcase(v){
-    return _.startCase(v).replace(/ /g,'-')
-}
 export const Version = {
     isV3,
     get version() {
         return currentVersion
     },
     get name() {
-        return stcase(yunzainame)
+        if (yunzainame === 'yunzai')
+            return 'Yunzai-Bot'
     },
     get yunzai() {
         return yunzaiVersion
@@ -95,7 +93,7 @@ export const Version = {
 }
 export const Plugin = {
     get name() {
-        return stcase(data.name)
+        return data.name
     },
     get version() {
         return data.version
