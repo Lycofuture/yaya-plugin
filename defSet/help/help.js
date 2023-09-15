@@ -6,7 +6,7 @@
 // 帮助配置
 export const helpCfg = {
     title: '丫丫帮助', // 帮助标题
-    subTitle: 'Yunzai-Bot & yaya-plugin' // 帮助副标题
+    subTitle: '当你准备做一件事时，请坚定地开始，不要把时间浪费在犹豫上' // 帮助副标题
 }
 export const helpList = [{
     group: '指令测试',

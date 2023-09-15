@@ -1,6 +1,7 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import Cfg from '../model/Cfg.js'
 import puppeteer from '../../../lib/puppeteer/puppeteer.js'
+import Common from "../components/Common.js";
 
 export default class help extends plugin {
   constructor () {
@@ -19,17 +20,15 @@ export default class help extends plugin {
   async befriend (e) {
     try {
       const config = await Cfg.deploy()
-      const data = {
-        ...config,
-        saveId: 'html',
-        tplFile: config.html
-      }
-      const severity = await puppeteer.screenshot(Cfg.package.name, data)
-      e.reply(severity)
-      return true
+      const path = 'html/help/index'
+     return  await Common.render(path, {
+       ...config,
+       // saveId: 'html',
+       // tplFile: config.html,
+       element: 'default'
+     }, { e, scale: 1.2 })
     } catch (error) {
       logger.info(error)
-      return false
     }
   }
 }

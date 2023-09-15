@@ -1,9 +1,9 @@
 import fs from 'fs'
 import {segment} from 'icqq'
-import Cfg from "./model/Cfg.js";
+import {Plugin} from "./components/index.js";
 
 global.segment = segment
-const files = fs.readdirSync(`./plugins/${Cfg.package.name}/apps`).filter(file => file.endsWith('.js'))
+const files = fs.readdirSync(`./plugins/${Plugin.name}/apps`).filter(file => file.endsWith('.js'))
 
 let ret = []
 
@@ -24,5 +24,5 @@ for (const i in files) {
     }
     apps[name] = ret[i].value[Object.keys(ret[i].value)[0]]
 }
-logger.info(Cfg.package.name, '初始化完成~~~')
+logger.info(Plugin.name, '初始化完成~~~')
 export {apps}
