@@ -1,10 +1,10 @@
 import fs from 'fs'
 import _ from 'lodash'
+import {Data} from '../model/index.js'
 
-const _path = process.cwd();
 const data = JSON.parse(fs.readFileSync('plugins/yaya-plugin/package.json', 'utf8'));
 
-const _logPath = `${_path}/plugins/${data.name}/CHANGELOG.md`
+const _logPath = `${Data._path}/plugins/${data.name}/CHANGELOG.md`
 
 export let logs = {}
 let changelogs = []
@@ -97,9 +97,6 @@ export const Plugin = {
     },
     get version() {
         return data.version
-    },
-    get _path() {
-        return _path
     }
 }
 export default {Version, Plugin}

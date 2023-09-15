@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import md5 from 'md5'
 
-export default class mihoyoapi {
+export default new class mihoyoapi {
     constructor(e) {
     }
 
@@ -11,7 +11,6 @@ export default class mihoyoapi {
      * @param query 请求值
      * @param body 默认为空
      * @param ck cookie值
-     * @returns {{Cookie, "X-Requested-With": string, "x-rpc-platform": string, "x-rpc-device_id": string, "User-Agent": string, Referer: string, DS: string, "x-rpc-channel": string, "x-rpc-sys_version": string, "x-rpc-app_version": string, "x-rpc-device_name": string, "x-rpc-client_type": string, "x-rpc-device_model": string}|{}}
      */
     getHeaders(type = "sign", query = '', body, ck) {
         let headers

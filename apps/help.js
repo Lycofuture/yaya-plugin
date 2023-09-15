@@ -1,8 +1,5 @@
-import plugin from '../../../lib/plugins/plugin.js'
-import Cfg from '../model/Cfg.js'
-import puppeteer from '../../../lib/puppeteer/puppeteer.js'
 import Common from "../components/Common.js";
-
+import {Data} from '../model/index.js'
 export default class help extends plugin {
   constructor () {
     super({
@@ -19,12 +16,9 @@ export default class help extends plugin {
 
   async befriend (e) {
     try {
-      const config = await Cfg.deploy()
-      const path = 'html/help/index'
-     return  await Common.render(path, {
+      const config = await Data.deploy()
+     return  await Common.render('help/index', {
        ...config,
-       // saveId: 'html',
-       // tplFile: config.html,
        element: 'default'
      }, { e, scale: 1.2 })
     } catch (error) {

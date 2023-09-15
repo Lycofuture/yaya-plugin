@@ -1,8 +1,6 @@
 import fs from 'fs'
-import {segment} from 'icqq'
 import {Plugin} from "./components/index.js";
 
-global.segment = segment
 const files = fs.readdirSync(`./plugins/${Plugin.name}/apps`).filter(file => file.endsWith('.js'))
 
 let ret = []

@@ -95,11 +95,6 @@ body .container .cont-box .help-table .tr .td .th .help-desc {
 body .container .copyright {
   text-align: center;
   font-family: '汉仪猫小奴体简', sans-serif;
-  position: absolute;
-  bottom: 15px;
-  margin: auto;
-  left: 0;
-  right: 0;
 }
 body .container .copyright .version {
   display: inline-block;
