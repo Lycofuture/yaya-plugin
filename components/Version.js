@@ -75,7 +75,7 @@ try {
 const yunzaiVersion = packageJson.version
 const yunzainame = packageJson.name
 const isV3 = yunzaiVersion[0] === '3'
-export const Version = {
+const Version = {
     isV3,
     get version() {
         return currentVersion
@@ -91,7 +91,7 @@ export const Version = {
         return changelogs
     }
 }
-export const Plugin = {
+const Plugin = {
     get name() {
         return data.name
     },
@@ -99,4 +99,5 @@ export const Plugin = {
         return data.version
     }
 }
-export default {Version, Plugin}
+const app = `${Plugin.name}:command:`
+export {Version, Plugin, app}

@@ -13,8 +13,5 @@ export const helpList = [{
     list: [{
         title: '#点赞',
         desc: '给我qq点赞'
-    }, {
-        title: '#米游社版块签到',
-        desc: '米游社社区签到'
     }]
 }]

@@ -14,7 +14,8 @@ export default class sign extends plugin {
                 reg: '^#米游社版块签到',
                 fnc: 'Check'
             }]
-        });
+        })
+        this.title= '#米游社版块签到'
     }
 
     async Check(e) {
@@ -24,7 +25,7 @@ export default class sign extends plugin {
         let ck = fs.readFileSync(file, 'utf-8')
         ck = YAML.parse(ck)
         if (!ck) return false
-        const data = []
+        let data = []
         for (const i in ck.valueOf()) {
             data.push(ck[i])
         }

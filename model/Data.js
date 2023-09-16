@@ -1,4 +1,4 @@
-import {Plugin} from "../components/index.js";
+import {app, Plugin} from "../components/index.js";
 import lodash from "lodash";
 import fs from "fs";
 import YAML from "yaml";
@@ -18,6 +18,38 @@ export default new class Data {
             // do nth
         }
         return cfg
+    }
+
+    get init() {
+
+    }
+
+    async command() {
+        const num = await redis.get(app + 'num')
+        let data = []
+        for (let i = 0; i < num; i++) {
+            data.push(await redis.get(app + i))
+        }
+        return data
+    }
+
+    async help() {
+        const data = await this.command()
+        let ber = []
+        for (const i of data) {
+            let comm = {}
+            const list = JSON.parse(i)
+            if (list.title.match(/帮助/)) continue
+            comm.title = list.title
+            comm.desc = list.dsc
+            ber.push(comm)
+        }
+        return [
+            {
+                group: '是丫丫我鸭',
+                list: ber
+            }
+        ]
     }
 
     getConfig(app, name) {

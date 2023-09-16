@@ -4,16 +4,17 @@ export default class like extends plugin {
     constructor() {
         super({
             name: '点赞',
-            dsc: '点赞',
+            dsc: '给你点赞',
             event: 'message',
             priority: 5000,
             rule: [
                 {
-                    reg: /^#?(点赞|赞我|点zan)$/,
+                    reg: '^#(点赞|赞我|点zan)$',
                     fnc: 'thuMUp'
                 }
             ]
         })
+        this.title ='#赞我'
     }
 
     async thuMUp(e) {

@@ -1,5 +1,5 @@
 import {Data} from '../model/index.js'
-import render from './common-lib/render.js'
+import {render} from './index.js'
 
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms))

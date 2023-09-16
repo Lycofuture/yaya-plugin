@@ -1,5 +1,6 @@
 import fs from 'fs'
 import {Plugin} from "./components/index.js";
+import {app} from "./components/index.js"
 
 const files = fs.readdirSync(`./plugins/${Plugin.name}/apps`).filter(file => file.endsWith('.js'))
 
@@ -12,6 +13,7 @@ files.forEach((file) => {
 ret = await Promise.allSettled(ret)
 
 const apps = {}
+let num = 0
 for (const i in files) {
     const name = files[i].replace('.js', '')
 
@@ -21,6 +23,10 @@ for (const i in files) {
         continue
     }
     apps[name] = ret[i].value[Object.keys(ret[i].value)[0]]
+    await redis.set(app + i, JSON.stringify(new apps[name]))
+    num++
 }
+await redis.set(`${app}num`, num)
+
 logger.info(Plugin.name, '初始化完成~~~')
 export {apps}
