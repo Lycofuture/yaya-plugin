@@ -1,4 +1,4 @@
-import { Api } from '../model/Api.js'
+import { Api } from '../model/index.js'
 
 export default class like extends plugin {
   constructor () {
@@ -10,11 +10,18 @@ export default class like extends plugin {
       rule: [
         {
           reg: '^#(点赞|赞我|点zan)$',
-          fnc: 'thuMUp'
+          fnc: 'thuMUp',
+          title: '#赞我',
+          desc: '给我点赞'
+        },
+        {
+          reg: '^#小黑猪$',
+          fnc: 'befriend',
+          title: '#小黑猪',
+          desc: '一只小黑子'
         }
       ]
     })
-    this.title = '#赞我'
   }
 
   async thuMUp (e) {

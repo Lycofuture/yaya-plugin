@@ -5,6 +5,12 @@
   "description": "Bot Plugin",
   "type": "module",
   "dependencies": {
-    "icqq": "^0.5.2"
+    "icqq": "^0.5.2",
+    "fetch": "^1.1.0",
+    "yaml": "^2.3.2",
+    "chokidar": "^3.5.3",
+    "path": "^0.12.7",
+    "md5": "^2.3.0",
+    "lodash": "^4.17.21"
   }
 }
