@@ -1,4 +1,5 @@
 import { Data, Render } from '../model/index.js'
+import fs from 'fs'
 
 export default class help extends plugin {
   constructor () {
@@ -8,22 +9,16 @@ export default class help extends plugin {
       event: 'message',
       priority: 5000,
       rule: [{
-        reg: '^#丫丫帮助$', fnc: 'befriend'
+        reg: '^#丫丫帮助$',
+        fnc: 'befriend'
       }]
     })
-    this.title = '#丫丫帮助'
-  }
-
-  async init () {
-    await Data.help()
   }
 
   async befriend (e) {
-    if (!Data.cfg('help')) {
-      await this.init()
+    if (!fs.existsSync(Data.getFilePath('html', 'help'))) {
+      await Data.help()
     }
-    // await Data.getdefSet('app', 'name')
-    console.log(await Data.getdefSet('app', 'name'))
     try {
       const config = await Data.deploy()
       return await Render('help/index', {

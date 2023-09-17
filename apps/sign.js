@@ -10,16 +10,19 @@ export default class sign extends plugin {
       dsc: '经验签到',
       event: 'message',
       priority: 5000,
-      rule: [{
-        reg: '^#米游社版块签到',
-        fnc: 'Check'
-      }]
+      rule: [
+        {
+          reg: '^#米游社版块签到',
+          fnc: 'Check',
+          title: '#米游社版块签到',
+          desc: '米游社社区版块签到,获取经验'
+        }
+      ]
     })
-    this.title = '#米游社版块签到'
   }
 
   async Check (e) {
-    const yamlDataUrl = `${Data._path('xiaoyao-cvs-plugin')}data/yaml`
+    const yamlDataUrl = `${Data._path()}plugins/xiaoyao-cvs-plugin/data/yaml`
     const file = `${yamlDataUrl}/${e.user_id}.yaml`
     if (!fs.existsSync(file)) return false
     let ck = fs.readFileSync(file, 'utf-8')
