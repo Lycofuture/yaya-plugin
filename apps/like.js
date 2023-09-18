@@ -13,12 +13,6 @@ export default class like extends plugin {
           fnc: 'thuMUp',
           title: '#赞我',
           desc: '给我点赞'
-        },
-        {
-          reg: '^#小黑猪$',
-          fnc: 'befriend',
-          title: '#小黑猪',
-          desc: '一只小黑子'
         }
       ]
     })

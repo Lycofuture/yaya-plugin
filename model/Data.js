@@ -10,7 +10,10 @@ export default new class Data {
     this.defSet = {}
     this.config = {}
     /** 监听文件 */
-    this.watcher = { config: {}, defSet: {} }
+    this.watcher = {
+      config: {},
+      defSet: {}
+    }
     // this.init()
   }
 
@@ -50,7 +53,8 @@ export default new class Data {
         subTitle: await Api.hitokoto()
       },
       helpList: [{
-        group: '指令列表', list: ber
+        group: '指令列表',
+        list: ber
       }]
     }
     this.setYaml(this.getFilePath('html', 'help', 'config'), list)
@@ -105,8 +109,11 @@ export default new class Data {
    * @returns {string}
    */
   getFilePath (app, name, type = '') {
-    if (type === 'defSet') return `${this._path('def')}${app}/${name}.yaml`
-    else return `${this._path('cfg')}${app}/${name}.yaml`
+    if (type === 'defSet') {
+      return `${this._path('def')}${app}/${name}.yaml`
+    } else {
+      return `${this._path('cfg')}${app}/${name}.yaml`
+    }
   }
 
   /** 监听配置文件 */
@@ -168,11 +175,13 @@ export default new class Data {
   async deploy () {
     const yaya_path = `../../../../../../plugins/${Plugin.name}/resources/`
     const data = this.getConfig('html', 'help')
-    const colCount = Math.min(5, Math.max(3, 2))
     const plugin = Plugin.name
     const version = Plugin.version
     return {
-      yaya_path, ...data, colCount, plugin, version
+      yaya_path,
+      ...data,
+      plugin,
+      version
     }
   }
 

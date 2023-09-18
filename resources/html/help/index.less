@@ -26,23 +26,17 @@ body {
       text-align: center;
       margin-top: 20px;
 
-      .head-box {
+      .title {
+        font-family: 'Aa-海芒星体', sans-serif;
+        font-size: 36px;
+        text-shadow: 3px 2px 3px rgba(0, 0, 0, 0.3);
+      }
 
-        .title {
-          font-family: 'Aa-海芒星体', sans-serif;
-          font-size: 36px;
-          text-shadow: 3px 2px 3px rgba(0, 0, 0, 0.3);
-        }
-
-        .label {
-          //margin: 5px 50px 0 0;
-          //text-align: right;
-          //颜色渐变
-          background: linear-gradient(to right, red, yellow, lime, aqua, blue, fuchsia) 0 / 50%;
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
+      .label {
+        //颜色渐变
+        background: linear-gradient(to right, red, yellow, lime, aqua, blue, fuchsia) 0 / 50%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
     }
 
@@ -53,14 +47,14 @@ body {
       margin: 10px 30px 15px;
       //溢出隐藏
       overflow: hidden;
-      //背景模糊
-      backdrop-filter: blur(3px);
+      //高斯模糊
+      backdrop-filter: blur(1px);
       //内部阴影
       box-shadow: inset 0 0 10px #888;
       box-sizing: border-box;
 
       .cont-center {
-        margin: auto;
+        margin: auto auto 10px;
         width: fit-content;
         text-align: center;
 
@@ -74,49 +68,41 @@ body {
           //border-color:beige;
           box-shadow: inset 0 0 10px #888;
           border-top: transparent;
-          padding: 5px 10px ;
+          padding: 5px 10px;
         }
       }
 
       .help-table {
-        text-align: center;
-        border-collapse: collapse;
-        margin: 0;
-        display: table;
-        overflow: hidden;
-        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: stretch;
+        margin: 0 5px 15px;
 
-        .tr {
-          display: table-row;
+        .item {
+          width: 360px;
+          height: auto;
+          margin: 10px;
+          //outline: 0.2px ridge;
 
-          .td {
-            display: table-cell;
-            padding: 10px;
-            position: relative;
-            text-align: left;
-            width: 33.33%;
+          .bubble {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            padding: 1px;
+            border-radius: 25px;
+            color: rgba(225, 225, 225, 0.9);
+            box-shadow: inset 0 0 10px #888;
+            align-items: flex-start;
+            //margin: 0 0 15px;
+            .title {
+              margin: 10px 10px 0 10px;
+              color: #d4b98c;
+              line-height: 20px;
+            }
 
-            .th {
-              padding: 10px;
-              border-radius: 15px;
-              border-width: 2px;
-              height: 50px;
-              display: block;
-              color: rgba(225,225,225,0.9);
-              //outline: 0.2px ridge;
-              box-shadow:inset 0 0 10px #888;
-
-              .help-title {
-                display: block;
-                line-height: 24px;
-              }
-
-              .help-desc {
-                color: #d4b98c;
-                display: block;
-                font-size: 13px;
-                line-height: 18px;
-              }
+            .desc {
+              color: #999;
+              margin: 10px;
             }
           }
         }
@@ -124,6 +110,7 @@ body {
     }
 
     .copyright {
+      color: #f1f1f1;
       text-align: center;
       font-family: '汉仪猫小奴体简', sans-serif;
       //底部居中

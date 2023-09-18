@@ -9,32 +9,20 @@
     </div>
 </div>
 {{each helpList group}}
-{{set len = group?.list?.length || 0 }}
 <div class="cont-box">
     <div class="cont-center">
         <div class="help-group">{{group.group}}</div>
     </div>
-    {{if len > 0}}
     <div class="help-table">
-        <div class="tr">
-            {{each group.list help idx}}
-            <div class="td">
-                <div class="th">
-                    <strong class="help-title">{{help.title}}</strong>
-                    <span class="help-desc">{{help.desc}}</span>
-                </div>
+        {{each group.list help}}
+        <div class="item">
+            <div class="bubble">
+                <strong class="title">{{help.title}}</strong>
+                <span class="desc">{{help.desc}}</span>
             </div>
-            {{if idx%colCount === colCount-1 && idx>0 && idx< len-1}}
         </div>
-        <div class="tr">
-            {{/if}}
-            {{/each}}
-            <% for(let i=(len-1)%colCount; i< colCount-1 ; i++){ %>
-            <div class="td"></div>
-            <% } %>
-        </div>
+        {{/each}}
     </div>
-    {{/if}}
 </div>
 {{/each}}
 <div class="copyright">{{@sys.copyright}}</div>

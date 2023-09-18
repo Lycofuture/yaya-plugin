@@ -23,14 +23,13 @@ body .container .info-box {
   text-align: center;
   margin-top: 20px;
 }
-body .container .info-box .head-box .title {
+body .container .info-box .title {
   font-family: 'Aa-海芒星体', sans-serif;
   font-size: 36px;
   text-shadow: 3px 2px 3px rgba(0, 0, 0, 0.3);
 }
-body .container .info-box .head-box .label {
+body .container .info-box .label {
   background: linear-gradient(to right, red, yellow, lime, aqua, blue, fuchsia) 0 / 50%;
-  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -38,12 +37,12 @@ body .container .cont-box {
   border-radius: 25px;
   margin: 10px 30px 15px;
   overflow: hidden;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(1px);
   box-shadow: inset 0 0 10px #888;
   box-sizing: border-box;
 }
 body .container .cont-box .cont-center {
-  margin: auto;
+  margin: auto auto 10px;
   width: fit-content;
   text-align: center;
 }
@@ -53,46 +52,40 @@ body .container .cont-box .cont-center .help-group {
   border-color: rgba(0, 0, 0, 0.5);
   box-shadow: inset 0 0 10px #888;
   border-top: transparent;
-  padding: 5px 10px ;
+  padding: 5px 10px;
 }
 body .container .cont-box .help-table {
-  text-align: center;
-  border-collapse: collapse;
-  margin: 0;
-  display: table;
-  overflow: hidden;
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
+  margin: 0 5px 15px;
 }
-body .container .cont-box .help-table .tr {
-  display: table-row;
+body .container .cont-box .help-table .item {
+  width: 360px;
+  height: auto;
+  margin: 10px;
 }
-body .container .cont-box .help-table .tr .td {
-  display: table-cell;
-  padding: 10px;
-  position: relative;
-  text-align: left;
-  width: 33.33%;
-}
-body .container .cont-box .help-table .tr .td .th {
-  padding: 10px;
-  border-radius: 15px;
-  border-width: 2px;
-  height: 50px;
-  display: block;
+body .container .cont-box .help-table .item .bubble {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  padding: 1px;
+  border-radius: 25px;
   color: rgba(225, 225, 225, 0.9);
   box-shadow: inset 0 0 10px #888;
+  align-items: flex-start;
 }
-body .container .cont-box .help-table .tr .td .th .help-title {
-  display: block;
-  line-height: 24px;
-}
-body .container .cont-box .help-table .tr .td .th .help-desc {
+body .container .cont-box .help-table .item .bubble .title {
+  margin: 10px 10px 0 10px;
   color: #d4b98c;
-  display: block;
-  font-size: 13px;
-  line-height: 18px;
+  line-height: 20px;
+}
+body .container .cont-box .help-table .item .bubble .desc {
+  color: #999;
+  margin: 10px;
 }
 body .container .copyright {
+  color: #f1f1f1;
   text-align: center;
   font-family: '汉仪猫小奴体简', sans-serif;
 }
