@@ -15,6 +15,8 @@ body {
   font-family: '喵小姐体', sans-serif;
   font-size: 18px;
   color: #fff;
+  width: 1080px;
+  height: 1920px;
 }
 body .container {
   padding: 1px;
@@ -37,8 +39,8 @@ body .container .cont-box {
   border-radius: 25px;
   margin: 10px 30px 15px;
   overflow: hidden;
-  backdrop-filter: blur(1px);
-  box-shadow: inset 0 0 10px #888;
+  backdrop-filter: blur(2px);
+  box-shadow: inset 0 0 10px 2px #888;
   box-sizing: border-box;
 }
 body .container .cont-box .cont-center {
@@ -61,7 +63,7 @@ body .container .cont-box .help-table {
   margin: 0 5px 15px;
 }
 body .container .cont-box .help-table .item {
-  width: 360px;
+  width: 316px;
   height: auto;
   margin: 10px;
 }
