@@ -15,7 +15,6 @@ body {
   font-family: '喵小姐体', sans-serif;
   font-size: 18px;
   color: #fff;
-  width: 1080px;
 }
 body .container {
   padding: 1px;
@@ -35,11 +34,19 @@ body .container .info-box .label {
   -webkit-text-fill-color: transparent;
 }
 body .container .cont-box {
+  /** 圆角 **/
   border-radius: 25px;
+  /** 四边边距 **/
   margin: 10px 30px 15px;
+  /** 溢出隐藏 **/
   overflow: hidden;
-  backdrop-filter: blur(2px);
-  box-shadow: inset 0 0 10px 2px #888;
+  /** 高斯模糊 **/
+  /** 内部阴影 **/
+  /** 设置实线边框 **/
+  border-style: solid;
+  /** 边框宽度 **/
+  border-width: 1px;
+  /** 设置怪异盒子模型 **/
   box-sizing: border-box;
 }
 body .container .cont-box .cont-center {
@@ -50,40 +57,49 @@ body .container .cont-box .cont-center {
 body .container .cont-box .cont-center .help-group {
   text-shadow: 2px 2px 2px #696969;
   border-radius: 0 0 10px 10px;
-  border-color: rgba(0, 0, 0, 0.5);
-  box-shadow: inset 0 0 10px #888;
+  /** 边框颜色 **/
+  /** 内部阴影 **/
   border-top: transparent;
   padding: 5px 10px;
+  /** 设置实线边框 **/
+  border-style: solid;
+  /** 边框宽度 **/
+  border-width: 1px;
 }
 body .container .cont-box .help-table {
   display: flex;
   flex-wrap: wrap;
-  align-content: stretch;
-  margin: 0 5px 15px;
+  margin-bottom: 10px;
 }
 body .container .cont-box .help-table .item {
-  width: 316px;
-  height: auto;
-  margin: 10px;
+  width: calc(33.33% - 22px);
+  margin: 0 0 5px;
+  padding: 10px;
 }
 body .container .cont-box .help-table .item .bubble {
   display: flex;
-  height: 100%;
   flex-direction: column;
   padding: 1px;
   border-radius: 25px;
-  color: rgba(225, 225, 225, 0.9);
-  box-shadow: inset 0 0 10px #888;
+  box-shadow: inset 0 0 10px 5px deepskyblue;
+  background: rgba(224, 255, 255, 0.1);
   align-items: flex-start;
+  margin: 5px;
+  height: 100%;
+  /** 设置行框的高度 **/
+  line-height: 25px;
+  /** 高斯模糊 **/
+  backdrop-filter: blur(6px);
 }
 body .container .cont-box .help-table .item .bubble .title {
   margin: 10px 10px 0 10px;
-  color: #d4b98c;
-  line-height: 20px;
+  color: cyan;
+  font-size: 20px;
 }
 body .container .cont-box .help-table .item .bubble .desc {
-  color: #999;
-  margin: 10px;
+  color: mediumslateblue;
+  margin: 0 10px 5px;
+  font-size: 15px;
 }
 body .container .copyright {
   color: #f1f1f1;
