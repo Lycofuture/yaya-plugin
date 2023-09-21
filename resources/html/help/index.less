@@ -18,10 +18,12 @@ body {
   font-family: '喵小姐体', sans-serif;
   font-size: 18px;
   color: #fff;
-  width: 1080px;
 
   .container {
-    padding: 1px;
+    /** 设置宽高 **/
+    position: relative;
+    width: 100%;
+    height: 100%;
 
     .info-box {
       text-align: center;
@@ -42,16 +44,21 @@ body {
     }
 
     .cont-box {
-      //圆角
+      /** 圆角 **/
       border-radius: 25px;
-      //四边边距
+      /** 四边边距 **/
       margin: 10px 30px 15px;
-      //溢出隐藏
+      /** 溢出隐藏 **/
       overflow: hidden;
-      //高斯模糊
-      backdrop-filter: blur(2px);
-      //内部阴影
-      box-shadow: inset 0 0 10px 2px #888;
+      /** 高斯模糊 **/
+      //backdrop-filter: blur(2px);
+      /** 内部阴影 **/
+      //box-shadow: inset 0 0 10px 2px #888;
+      /** 设置实线边框 **/
+      border-style: solid;
+      /** 边框宽度 **/
+      border-width: 1px;
+      /** 设置怪异盒子模型 **/
       box-sizing: border-box;
 
       .cont-center {
@@ -63,47 +70,54 @@ body {
           //字体阴影
           text-shadow: 2px 2px 2px rgba(105, 105, 105, 1);
           border-radius: 0 0 10px 10px;
-          border-color: rgba(0, 0, 0, 0.5);
-          //border: solid;
-          //border-width:1px;
-          //border-color:beige;
-          box-shadow: inset 0 0 10px #888;
+          /** 边框颜色 **/
+          //border-color: rgba(0, 0, 0, 0.5);
+          /** 内部阴影 **/
+          //box-shadow: inset 0 0 10px #888;
           border-top: transparent;
           padding: 5px 10px;
+          /** 设置实线边框 **/
+          border-style: solid;
+          /** 边框宽度 **/
+          border-width: 1px;
         }
       }
 
       .help-table {
         display: flex;
         flex-wrap: wrap;
-        align-content: stretch;
-        margin: 0 5px 15px;
+        margin-bottom: 10px;
 
         .item {
-          width: 316px;
-          height: auto;
-          margin: 10px;
-          //outline: 0.2px ridge;
+          width: calc(33.33% - 20px);
+          margin: 0 0 5px;
+          padding: 10px;
 
           .bubble {
             display: flex;
-            height: 100%;
             flex-direction: column;
             padding: 1px;
             border-radius: 25px;
-            color: rgba(225, 225, 225, 0.9);
-            box-shadow: inset 0 0 10px #888;
+            box-shadow: inset 0 0 10px 5px deepskyblue;
+            background: rgba(224, 255, 255, 0.2);
             align-items: flex-start;
-            //margin: 0 0 15px;
+            margin: 5px;
+            height: 100%;
+            /** 设置行框的高度 **/
+            line-height: 15px;
+            /** 高斯模糊 **/
+            backdrop-filter: blur(2px);
+
             .title {
-              margin: 10px 10px 0 10px;
-              color: #d4b98c;
-              line-height: 20px;
+              margin: 15px 15px 0;
+              color: salmon;
+              font-size: 15px;
             }
 
             .desc {
-              color: #999;
-              margin: 10px;
+              color: dimgray;
+              margin: 0 15px 5px;
+              font-size: 10px;
             }
           }
         }
@@ -114,12 +128,7 @@ body {
       color: #f1f1f1;
       text-align: center;
       font-family: '汉仪猫小奴体简', sans-serif;
-      //底部居中
-      //position:absolute;
-      //bottom: 15px;
-      //margin: auto;
-      //left: 0;
-      //right: 0;
+
       .version {
         display: inline-block;
         font-family: 'Aa-海芒星体', sans-serif;
