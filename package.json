@@ -4,6 +4,8 @@
   "author": "Lycofuture",
   "description": "Bot Plugin",
   "type": "module",
+  "scripts": {
+  },
   "dependencies": {
     "icqq": "^0.5.2",
     "fetch": "^1.1.0",
@@ -12,5 +14,8 @@
     "path": "^0.12.7",
     "md5": "^2.3.0",
     "lodash": "^4.17.21"
+  },
+  "pnpm": {
+    "patchedDependencies": {}
   }
 }

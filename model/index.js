@@ -4,6 +4,6 @@ import Render from './render/Render.js'
 import Common from './Common.js'
 import Data from './Data.js'
 
-export * from './Api.js'
-export * from './Version.js'
+export * from './api/Api.js'
+export * from './pke/Version.js'
 export { Mysapi, Gids, Render, Common, Data }

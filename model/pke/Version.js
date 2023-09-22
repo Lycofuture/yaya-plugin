@@ -1,6 +1,6 @@
 import fs from 'fs'
 import _ from 'lodash'
-import { Data } from './index.js'
+import {Data} from '../index.js'
 
 const data = JSON.parse(fs.readFileSync('plugins/yaya-plugin/package.json', 'utf8'))
 
