@@ -17,5 +17,8 @@
   },
   "pnpm": {
     "patchedDependencies": {}
+  },
+  "npm": {
+    "patchedDependencies": {}
   }
 }
