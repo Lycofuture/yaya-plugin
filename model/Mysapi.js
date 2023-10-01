@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import md5 from 'md5'
 
-export default new class mihoyoapi {
+export default new class Mys_api {
   /**
    *
    * @param type 版块

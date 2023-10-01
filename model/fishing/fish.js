@@ -1,10 +1,6 @@
 import {sleep} from '../index.js'
 
 export default new class fish {
-	constructor() {
-		console.log(this.list())
-	}
-
 	get arr() {
 		return [{
 			id: 1,

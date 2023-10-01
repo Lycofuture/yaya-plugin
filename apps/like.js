@@ -1,10 +1,10 @@
-import { Api } from '../model/index.js'
+import {Api} from '../model/index.js'
 
 export default class like extends plugin {
   constructor () {
     super({
-      name: '点赞',
-      dsc: '给你点赞',
+      name: '丫丫：点赞',
+      dsc: '功能列表',
       event: 'message',
       priority: 5000,
       rule: [

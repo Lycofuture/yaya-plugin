@@ -24,9 +24,7 @@ export default new class Data {
 		if (!fs.existsSync(this._path('cfg'))) {
 			this.copyFolderRecursively(this._path('def').replace(/[\\/]/g, '//'), this._path('cfg').replace(/[\\/]/g, '//')).then()
 		}
-		if (!fs.existsSync(this._path('cfg'))) {
-			this.help().then(r => r)
-		}
+		this.help().then(r => r)
 	}
 
 	// bot名
@@ -56,8 +54,8 @@ export default new class Data {
 	 * @param name 名称
 	 * @returns {string}
 	 */
-	redis_name(app, name = '') {
-		if (!name) name = app
+	redis_name(app, name = null) {
+		if (!name && name !== 0) name = app
 		return `${this.name}:${app}:${name}`
 	}
 
@@ -74,26 +72,29 @@ export default new class Data {
 	// 初始化菜单
 	async help() {
 		const data = await this.command()
-		const ber = []
+		let command = []
 		for (const i of data) {
+			const command_list = {}
+			const ber = []
+			if ((i.dsc).match(/菜单/)) continue
+			command_list.group = i.dsc
 			for (const v of i.rule) {
 				const comm = {}
-				if (v.title) {
-					comm.title = v.title
+				if (v.reg) {
+					comm.title = v.reg
 					comm.desc = v.desc
 					ber.push(comm)
 				}
 			}
+			command_list.list = ber
+			command.push(command_list)
 		}
 		const list = {
 			helpCfg: {
 				title: '丫丫帮助',
 				subTitle: await Api.hitokoto()
 			},
-			helpList: [{
-				group: '指令列表',
-				list: ber
-			}]
+			helpList: command
 		}
 		this.setYaml(this.getFilePath('html', 'help', 'defSet'), list)
 	}
@@ -252,8 +253,6 @@ export default new class Data {
 			const destPath = path.join(dest, file);
 			// 获取源文件/文件夹的状态信息
 			const stat = fs.lstatSync(srcPath);
-			console.log(srcPath)
-			console.log(stat)
 			// 判断当前文件/文件夹是否为文件夹
 			if (stat.isDirectory()) {
 				// 如果是文件夹，则递归调用copyFolderRecursively函数复制文件夹
