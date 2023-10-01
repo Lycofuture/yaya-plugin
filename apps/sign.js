@@ -3,7 +3,6 @@ import YAML from 'yaml'
 import fetch from 'node-fetch'
 import {Data, Gids, Mys_api} from '../model/index.js'
 
-const name = '米游社'
 export default class Mys_sign extends plugin {
 	constructor() {
 		super({
@@ -13,8 +12,9 @@ export default class Mys_sign extends plugin {
 			priority: 5000,
 			rule: [
 				{
-					reg: `^#${name}版块签到`,
+					reg: `^#米游社版块签到`,
 					fnc: 'sign',
+					title: '#米游社版块签到',
 					desc: '米游社社区版块签到,获取经验'
 				}
 			]

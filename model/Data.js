@@ -22,9 +22,9 @@ export default new class Data {
 	// 初始化
 	get init() {
 		if (!fs.existsSync(this._path('cfg'))) {
-			this.copyFolderRecursively(this._path('def').replace(/[\\/]/g, '//'), this._path('cfg').replace(/[\\/]/g, '//')).then()
+			this.help().then(r => r)
+			this.copyFolderRecursively(this._path('def'), this._path('cfg')).then()
 		}
-		this.help().then(r => r)
 	}
 
 	// bot名
@@ -72,31 +72,29 @@ export default new class Data {
 	// 初始化菜单
 	async help() {
 		const data = await this.command()
-		let command = []
+		const command_list = {}
+		const ber = []
 		for (const i of data) {
-			const command_list = {}
-			const ber = []
 			if ((i.dsc).match(/菜单/)) continue
 			command_list.group = i.dsc
 			for (const v of i.rule) {
 				const comm = {}
-				if (v.reg) {
-					comm.title = v.reg
+				if (v.title) {
+					comm.title = v.title
 					comm.desc = v.desc
 					ber.push(comm)
 				}
 			}
 			command_list.list = ber
-			command.push(command_list)
 		}
 		const list = {
 			helpCfg: {
 				title: '丫丫帮助',
 				subTitle: await Api.hitokoto()
 			},
-			helpList: command
+			helpList: [command_list]
 		}
-		this.setYaml(this.getFilePath('html', 'help', 'defSet'), list)
+		this.setYaml(this.getFilePath('html', 'help'), list)
 	}
 
 	// 默认配置文件
