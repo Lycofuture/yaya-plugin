@@ -1,4 +1,4 @@
-import {Api} from './index.js'
+import { Api } from './index.js'
 import fs from 'fs'
 import YAML from 'yaml'
 import chokidar from 'chokidar'
@@ -21,8 +21,8 @@ export default new class Data {
 
 	// 初始化
 	get init() {
+		this.help().then()
 		if (!fs.existsSync(this._path('cfg'))) {
-			this.help().then(r => r)
 			this.copyFolderRecursively(this._path('def'), this._path('cfg')).then()
 		}
 	}
@@ -94,33 +94,31 @@ export default new class Data {
 			},
 			helpList: [command_list]
 		}
-		this.setYaml(this.getFilePath('html', 'help'), list)
+		this.setYaml(this.getFilePath('help', 'defSet'), list)
 	}
 
 	// 默认配置文件
-	getDefSet(app, name) {
-		return this.getYaml(app, name, 'defSet')
+	getDefSet(name) {
+		return this.getYaml(name, 'defSet')
 	}
 
 	/** 用户配置
-	 * @param app  功能
 	 * @param name 配置文件名称
 	 */
-	getConfig(app, name) {
-		return {...this.getDefSet(app, name), ...this.getYaml(app, name)}
+	getConfig(name) {
+		return {...this.getDefSet(name), ...this.getYaml(name)}
 	}
 
 	/**
 	 * 获取配置yaml
-	 * @param app 功能
 	 * @param name 名称
 	 * @param type 默认配置-defSet，用户配置-config
 	 */
-	getYaml(app, name, type = 'config') {
-		const file = this.getFilePath(app, name, type)
+	getYaml(name, type = 'config') {
+		const file = this.getFilePath(name, type)
 		// 检查目录是否存在
 		if (!fs.existsSync(file)) return false
-		const key = `${app}.${name}`
+		const key = `${name}`
 
 		if (this[type][key]) return this[type][key]
 
@@ -129,45 +127,44 @@ export default new class Data {
 				fs.readFileSync(file, 'utf8')
 			)
 		} catch (error) {
-			logger.error(`[${app}][${name}] 格式错误 ${error}`)
+			logger.error(`[${name}] 格式错误 ${error}`)
 			return false
 		}
-
-		this.watch(file, app, name, type)
+		
+		this.watch(file, name, type)
 
 		return this[type][key]
 	}
 
 	/**
 	 * 配置文件路径
-	 * @param app 功能
 	 * @param name 名称
 	 * @param type 默认配置-defSet，用户配置-config
 	 * @returns {string}
 	 */
-	getFilePath(app, name, type = '') {
+	getFilePath(name, type = '') {
 		if (type === 'defSet') {
-			return `${this._path('def')}${app}/${name}.yaml`
+			return `${this._path('def')}${name}.yaml`
 		} else {
-			return `${this._path('cfg')}${app}/${name}.yaml`
+			return `${this._path('cfg')}${name}.yaml`
 		}
 	}
 
 	/** 监听配置文件 */
-	watch(file, app, name, type = 'defSet') {
-		const key = `${app}.${name}`
+	watch(file, name, type = 'defSet') {
+		const key = `${name}`
 
 		if (this.watcher[type][key]) return
 
 		const watcher = chokidar.watch(file)
 		watcher.on('change', filename => {
 			delete this[type][key]
-			logger.mark(`[修改配置文件][${type}][${app}][${name}]`)
-			if (this[`change_${app}${name}`]) {
-				this[`change_${app}${name}`]()
+			logger.mark(`[修改配置文件][${type}][${name}]`)
+			if (this[`change_${name}`]) {
+				this[`change_${name}`]()
 			}
-			if (this[`${filename}_${app}${name}`]) {
-				this[`${filename}_${app}${name}`]()
+			if (this[`${filename}_${name}`]) {
+				this[`${filename}_${name}`]()
 			}
 		})
 

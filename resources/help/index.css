@@ -1,17 +1,17 @@
 @font-face {
   font-family: '汉仪猫小奴体简';
-  src: url("../../common/font/汉仪猫小奴体简.ttf");
+  src: url("../common/font/汉仪猫小奴体简.ttf");
 }
 @font-face {
   font-family: '喵小姐体';
-  src: url("../../common/font/喵小姐体.ttf");
+  src: url("../common/font/喵小姐体.ttf");
 }
 @font-face {
   font-family: 'Aa-海芒星体';
-  src: url("../../common/font/Aa-海芒星体.ttf");
+  src: url("../common/font/Aa-海芒星体.ttf");
 }
 body {
-  background-image: url(./theme/bake-1.jpg);
+  background-image: url(theme/bake-1.jpg);
   font-family: '喵小姐体', sans-serif;
   font-size: 18px;
   color: #fff;
