@@ -1,24 +1,23 @@
 import {Data} from '../index.js'
 
 export default async function (path, params, cfg) {
-	const {e} = cfg
-	if (!e.runtime) {
-		console.log('未找到e.runtime，请升级至最新版Yunzai')
-	}
-	return e.runtime.render(Data.name, path, params, {
-		retType: cfg.retMsgId ? 'msgId' : 'default',
-		beforeRender({data}) {
-			const layoutPath = `${Data._path('html')}/common/layout/`
-			return {
-				...data,
-				_plugin: Data.name,
-				_htmlPath: path,
-				tplFile: `./plugins/${Data.name}/resources/${path}/index.html`,
-				defaultLayout: layoutPath + 'default.html',
-				sys: {
-					copyright: `Created By ${Data.root_name}<span class="version">${Data.root_version}</span> & ${Data.name}<span class="version">${Data.version}</span>`
-				}
-			}
-		}
-	})
+    const {e} = cfg
+    if (!e.runtime) {
+        console.warn('未找到e.runtime，请升级至最新版Yunzai')
+    }
+    const key = new Data()
+    return e.runtime.render(key.name, path, params, {
+        beforeRender({data}) {
+            const layoutPath = `${key.get_path('html')}/common/layout/`
+            return {
+                ...data,
+                cssPath: `../../../../plugins/${key.name}/resources/html/${path}/${path}.css`,
+                tplFile: `./plugins/${key.name}/resources/html/${path}/${path}.handlebars`,
+                defaultLayout: layoutPath + 'default.handlebars',
+                sys: {
+                    copyright: `Created By ${key.root_name}<span class="version">${key.root_version}</span> & ${key.name}<span class="version">${key.version}</span>`
+                }
+            }
+        }
+    })
 }

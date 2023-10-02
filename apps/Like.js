@@ -1,6 +1,6 @@
 import {Api} from '../model/index.js'
 
-export default class like extends plugin {
+export default class Like extends plugin {
   constructor () {
     super({
       name: '丫丫：点赞',

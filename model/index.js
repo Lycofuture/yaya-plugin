@@ -1,9 +1,9 @@
-import Mys_api from './Mysapi.js'
-import Gids from './Gids.js'
+import Mys_api from './croe/Mysapi.js'
+import Gids from './croe/Gids.js'
 import Render from './render/Render.js'
-import {sleep} from './Common.js'
-import Data from './Data.js'
-import Help_mold from "./Help.js";
+import Common from './croe/Common.js'
+import Data from './croe/Data.js'
+import Template from "./croe/Template.js";
 
 export * from './api/Api.js'
-export {Mys_api, Gids, Render, sleep, Data, Help_mold}
+export {Mys_api, Gids, Render, Common, Data, Template}

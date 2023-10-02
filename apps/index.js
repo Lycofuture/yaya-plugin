@@ -1,7 +1,8 @@
 import fs from 'fs'
 import {Data} from '../model/index.js'
 
-const files = fs.readdirSync(`${Data._path('yaya')}apps`).filter(file => file.endsWith('.js') && file !== 'index.js')
+const cfg = new Data()
+const files = fs.readdirSync(`${cfg.get_path('yaya')}apps`).filter(file => file.endsWith('.js') && file !== 'index.js')
 
 let ret = []
 
@@ -22,10 +23,10 @@ for (const i in files) {
 		continue
 	}
 	apps[name] = ret[i].value[Object.keys(ret[i].value)[0]]
-	await redis.set(Data.redis_name('help', i), JSON.stringify(new apps[name]()))
+	await redis.set(cfg.redis_name('help', i), JSON.stringify(new apps[name]()))
 	num++
 }
-await redis.set(Data.redis_name('help', 'num'), num)
+await redis.set(cfg.redis_name('help', 'num'), num)
 
-logger.info(Data.name, '初始化完成~~~')
+logger.info(cfg.name, '初始化完成~~~')
 export {apps, ret}
