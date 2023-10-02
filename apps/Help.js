@@ -1,4 +1,4 @@
-import {Help_mold, Render} from '../model/index.js'
+import { Help_mold, Render } from '../model/index.js'
 
 export default class Help extends plugin {
 	constructor() {
@@ -13,15 +13,15 @@ export default class Help extends plugin {
 			}]
 		})
 	}
-
+	
 	async befriend(e) {
-		try {
 			const config = await Help_mold.deploy()
-			return await Render('html/help', {
+		return await Render('help', {
 				...config, element: 'default'
 			}, {e, scale: 1.2})
-		} catch (error) {
-			logger.info(error)
-		}
+	}
+	
+	async help() {
+		return await Help_mold.deploy()
 	}
 }
