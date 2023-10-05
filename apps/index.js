@@ -1,6 +1,7 @@
 import fs from 'fs'
 import {Data} from '../model/index.js'
 
+logger.info('---------^_^---------')
 const cfg = new Data()
 const files = fs.readdirSync(`${cfg.get_path('yaya')}apps`).filter(file => file.endsWith('.js') && file !== 'index.js')
 
@@ -9,7 +10,6 @@ let ret = []
 files.forEach((file) => {
 	ret.push(import(`./${file}`))
 })
-
 ret = await Promise.allSettled(ret)
 
 const apps = {}
@@ -29,4 +29,5 @@ for (const i in files) {
 await redis.set(cfg.redis_name('help', 'num'), num)
 
 logger.info(cfg.name, '初始化完成~~~')
+logger.info('---------^_^---------')
 export {apps, ret}

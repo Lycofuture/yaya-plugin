@@ -18,49 +18,39 @@
   padding: 0;
   box-sizing: border-box;
   user-select: none;
-  color: black;
 }
 
 body {
   background-image: url("../../image/bake-1.jpg");
   font-family: sans-serif;
   font-size: 16px;
-  margin: 10px 20px 10px;
+  text-shadow: 1px 1px 1px #000;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
   background-color: inherit;
-  justify-content: center;
   overflow-x: hidden;
   position: relative;
+  color: aliceblue;
 }
 
 .info-box {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  margin-top: 20px;
+  margin: 20px 30px 0;
+  border-radius: 15px;
+  padding: 10px 20px;
+  font-family: 'Aa-海芒星体', sans-serif;
+
+  //box-shadow: inset 0 0 10px 2px aliceblue, 5px 5px 10px rgb(0 0 0 / 50%);
 
   .info-title {
-    font-family: 'Aa-海芒星体', sans-serif;
     font-size: 36px;
-    color: aliceblue;
-    text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   }
 
   .info-label {
-    backdrop-filter: blur(10px);
-    box-shadow: inset 0 0 20px 0 #fff;
-    border-radius: 10px;
-    width: fit-content;
     //颜色渐变
-    background: linear-gradient(to right, red, yellow, lime, aqua, blue, fuchsia) 0 / 50%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    //background: linear-gradient(to top, #ff0000,orange,yellow,green, #00ff00,blue,purple) 0 / 20%;
+    //-webkit-background-clip: text;
+    //-webkit-text-fill-color: transparent;
     font-size: 20px;
   }
 }
@@ -69,13 +59,13 @@ body {
   /** 圆角 **/
   border-radius: 25px;
   /** 四边边距 **/
-  margin: 10px 30px 15px;
+  margin: 20px 30px 15px;
   /** 溢出隐藏 **/
   overflow: hidden;
   /** 高斯模糊 **/
-  backdrop-filter: blur(0.5px);
+  backdrop-filter: blur(6px);
   /** 内部阴影 **/
-  box-shadow: inset 0 0 10px 2px aliceblue;
+  box-shadow: inset 2px 2px 10px 2px aliceblue, inset -2px -2px 10px 2px aliceblue, 5px 5px 10px 0 rgb(0 0 0 / 45%);
   /** 设置实线边框 **/
   //border-style: solid;
   /** 边框宽度 **/
@@ -83,24 +73,30 @@ body {
   /** 设置怪异盒子模型 **/
   box-sizing: border-box;
 
-  .help-group {
+  .cont-group {
     margin: auto;
     width: fit-content;
+    height: 50px;
+    color: #7700FF;
+    font-family: '喵小姐体', sans-serif;
+    //box-shadow: inset 0 0 10px 3px aliceblue;
+    border-style: outset;
     border-radius: 0 0 10px 10px;
+    font-size: 20px;
     /** 边框颜色 **/
-    border-color: rgba(0, 0, 0, 0.5);
+    //border-color: rgba(0, 0, 0, 0.5);
     /** 内部阴影 **/
     //box-shadow: inset 0 0 10px #888;
-    border-top: transparent;
-    padding: 5px 10px;
+    padding: 10px 10px;
     /** 设置实线边框 **/
-    border-style: solid;
+    //border-style: solid;
     /** 边框宽度 **/
-    border-width: 1px;
-    color: aliceblue;
+    //border-width: 1px;
+    /** 边框顶部透明 **/
+    border-top: transparent;
   }
 
-  .help-table {
+  .cont-table {
     display: grid;
     align-content: center;
     justify-content: start;
@@ -108,44 +104,40 @@ body {
     grid-gap: 20px;
     padding: 10px;
     margin: 0 10px 10px;
-    font-family: '喵小姐体', sans-serif;
 
-
-    .item {
+    .cont-item {
+      /** 设置实线边框 **/
+      border-style: inset;
       position: relative;
-      align-content: space-between;
+      align-content: center;
       display: grid;
       padding: 1px;
       border-radius: 25px;
-      box-shadow: inset 0 0 10px 0 deepskyblue;
-      background: rgba(224, 255, 255, 0.2);
       /** 设置行框的高度 **/
       //line-height: 25px;
-      /** 高斯模糊 **/
-      backdrop-filter: blur(3px);
-
-      .title {
+      .cont-title {
         margin: 10px 15px 0;
+        font-family: 'Aa-海芒星体', sans-serif;
+        color: #FF3333;
         font-size: 15px;
       }
 
-      .desc {
-        color: grey;
+      .cont-desc {
         margin: 0 15px 5px;
+        font-family: '汉仪猫小奴体简', sans-serif;
         font-size: 16px;
+        color: #FF7744;
       }
     }
   }
 }
 
-
 .copyright {
   text-align: center;
   font-size: 18px;
-  font-family: '汉仪猫小奴体简', sans-serif;
 
   .version {
     font-size: 18px;
-    font-family: 'Aa-海芒星体', sans-serif;
+    color: #d4b98c;
   }
 }

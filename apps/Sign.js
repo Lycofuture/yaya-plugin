@@ -14,8 +14,6 @@ export default class Mys_sign extends plugin {
                 {
                     reg: `^#米游社版块签到`,
                     fnc: 'sign',
-                    title: '#米游社版块签到',
-                    desc: '米游社社区版块签到,获取经验'
                 }
             ]
         })

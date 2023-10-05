@@ -6,12 +6,12 @@
 </div>
 {{each helpList group}}
 <div class="cont-box">
-    <div class="help-group">{{group.group}}</div>
-<div class="help-table">
+    <div class="cont-group">{{group.group}}</div>
+<div class="cont-table">
 {{each group.list help}}
-    <div class="item">
-        <strong class="title">{{help.title}}</strong>
-        <span class="desc">{{help.desc}}</span>
+    <div class="cont-item">
+        <strong class="cont-title">{{help.title}}</strong>
+        <span class="cont-desc">{{help.desc}}</span>
     </div>
 {{/each}}
 </div>

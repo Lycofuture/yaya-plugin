@@ -1,2 +1,10 @@
-config/config
-node_modules
+node_modules/
+data/
+*_test.js
+test.*
+*.log
+.vscode/
+.eslintignore
+temp/
+*.css.map
+config/config/**

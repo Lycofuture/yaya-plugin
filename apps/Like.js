@@ -11,8 +11,6 @@ export default class Like extends plugin {
         {
           reg: '^#(点赞|赞我|点zan)$',
           fnc: 'thuMUp',
-          title: '#赞我',
-          desc: '给我点赞'
         }
       ]
     })

@@ -1,22 +1,39 @@
-import {Api} from '../index.js'
 import fs from 'fs'
 import YAML from 'yaml'
-// import chokidar from 'chokidar'
 import path from 'path'
+import chokidar from 'chokidar'
 
 export default class Data {
-    // 参考yunzai配置
     constructor(e = {}) {
         this.defSet = {}
         this.config = {}
         this.package = JSON.parse(fs.readFileSync('./plugins/yaya-plugin/package.json', 'utf8'))
         this.package_root = JSON.parse(fs.readFileSync('package.json', 'utf8'))
         /** 监听文件 */
-        // this.watcher = {
-        //     config: {},
-        //     defSet: {}
-        // }
+        this.watcher = {
+            config: {},
+            defSet: {}
+        }
         this.userId = e?.user_id
+        this.init
+    }
+
+    get init() {
+        const _path = this.get_path('cfg')
+        const files = fs.readdirSync(this.get_path('def')).filter(file => file.endsWith('.yaml'))
+        if (!fs.existsSync(_path)) {
+            files.forEach((file) => {
+                const [name, key] = file.split('.')
+                this.cpCfg(name)
+            })
+            logger.info('初始化配置文件完成')
+        } else if ((fs.readdirSync(_path)).length === 0) {
+            files.forEach((file) => {
+                const [name, key] = file.split('.')
+                this.cpCfg(name, key)
+            })
+            logger.info('初始化配置文件完成')
+        }
     }
 
     // bot名
@@ -51,43 +68,43 @@ export default class Data {
         return `${this.name}:${app}:${name}`
     }
 
-    // 初始化指令
-    async command() {
-        const num = await redis.get(this.redis_name('help', 'num'))
-        const data = []
-        for (let i = 0; i < num; i++) {
-            data.push(JSON.parse(await redis.get(this.redis_name('help', i))))
-        }
-        return data
-    }
-
-    // 初始化菜单
-    async help() {
-        const data = await this.command()
-        const command_list = {}
-        const ber = []
-        for (const i of data) {
-            if ((i.dsc).match(/菜单/)) continue
-            command_list.group = i.dsc
-            for (const v of i.rule) {
-                const comm = {}
-                if (v.title) {
-                    comm.title = v.title
-                    comm.desc = v.desc
-                    ber.push(comm)
-                }
-            }
-            command_list.list = ber
-        }
-        const list = {
-            helpCfg: {
-                title: '丫丫帮助',
-                subTitle: await Api.hitokoto()
-            },
-            helpList: [command_list]
-        }
-        this.setYaml(this.get_FilePath('help', 'defSet'), list)
-    }
+    // // 初始化指令
+    // async command() {
+    //     const num = await redis.get(this.redis_name('help', 'num'))
+    //     const data = []
+    //     for (let i = 0; i < num; i++) {
+    //         data.push(JSON.parse(await redis.get(this.redis_name('help', i))))
+    //     }
+    //     return data
+    // }
+    //
+    // // 初始化菜单
+    // async help() {
+    //     const data = await this.command()
+    //     const command_list = {}
+    //     const ber = []
+    //     for (const i of data) {
+    //         if ((i.dsc).match(/菜单/)) continue
+    //         command_list.group = i.dsc
+    //         for (const v of i.rule) {
+    //             const comm = {}
+    //             if (v.title) {
+    //                 comm.title = v.title
+    //                 comm.desc = v.desc
+    //                 ber.push(comm)
+    //             }
+    //         }
+    //         command_list.list = ber
+    //     }
+    //     const list = {
+    //         helpCfg: {
+    //             title: '丫丫帮助',
+    //             subTitle: await Api.hitokoto()
+    //         },
+    //         helpList: [command_list]
+    //     }
+    //     this.setYaml(this.get_FilePath('help', 'defSet'), list)
+    // }
 
     /**
      * 默认配置文件
@@ -126,7 +143,7 @@ export default class Data {
             return false
         }
 
-        // this.watch(file, name, type)
+        this.watch(file, name, type)
 
         return this[type][key]
     }
@@ -145,26 +162,26 @@ export default class Data {
         }
     }
 
-    // /** 监听配置文件 */
-    // watch(file, name, type = 'defSet') {
-    //     const key = `${name}`
-    //
-    //     if (this.watcher[type][key]) return
-    //
-    //     const watcher = chokidar.watch(file)
-    //     watcher.on('change', filename => {
-    //         delete this[type][key]
-    //         logger.mark(`[修改配置文件][${type}][${name}]`)
-    //         if (this[`change_${name}`]) {
-    //             this[`change_${name}`]()
-    //         }
-    //         if (this[`${filename}_${name}`]) {
-    //             this[`${filename}_${name}`]()
-    //         }
-    //     })
-    //
-    //     this.watcher[type][key] = watcher
-    // }
+    /** 监听配置文件 */
+    watch(file, name, type = 'defSet') {
+        const key = `${name}`
+
+        if (this.watcher[type][key]) return
+
+        const watcher = chokidar.watch(file)
+        watcher.on('change', filename => {
+            delete this[type][key]
+            logger.mark(`[修改配置文件][${type}][${name}]`)
+            if (this[`change_${name}`]) {
+                this[`change_${name}`]()
+            }
+            if (this[`${filename}_${name}`]) {
+                this[`${filename}_${name}`]()
+            }
+        })
+
+        this.watcher[type][key] = watcher
+    }
 
     /**
      * 路径
@@ -199,12 +216,12 @@ export default class Data {
 
     /**
      * 检查和创建目录
-     * @param _path 路径
+     * @param _path 文件路径
      */
     createDir(_path = '') {
         const nowPath = path.dirname(_path)
         if (!fs.existsSync(nowPath)) {
-            fs.mkdirSync(nowPath, {recursive: true})
+            this.mkdir(nowPath)
         }
         return path.basename(_path)
     }
@@ -219,5 +236,24 @@ export default class Data {
         if (ending.match(/.yaml/)) {
             fs.writeFileSync(_path, YAML.stringify(data), 'utf-8')
         }
+    }
+
+    cpCfg(name) {
+        if (!fs.existsSync(this.get_path('cfg'))) {
+            this.mkdir(this.get_path('cfg'))
+        }
+
+        let set = `${this.get_path('cfg')}${name}.yaml`
+        if (!fs.existsSync(set)) {
+            fs.copyFileSync(`${this.get_path('def')}${name}.yaml`, set)
+        }
+    }
+
+    /**
+     * 创建文件夹
+     * @param _path 文件夹路径
+     */
+    mkdir(_path) {
+        fs.mkdirSync(_path, {recursive: true})
     }
 }

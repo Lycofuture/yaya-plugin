@@ -29,8 +29,7 @@ export default class Template extends Data {
      * @returns {Promise<*&{saveId: string}>}
      */
     async getData() {
-        await this.help()
-        let helpData = this.get_DefSet('help')
+        let helpData = this.get_Config('help')
         return {
             ...this.screenData,
             saveId: 'help',
