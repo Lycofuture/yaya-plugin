@@ -1,0 +1,21 @@
+{{extend defaultLayout}}
+{{block 'main'}}
+<div class="info-box">
+    <div class="info-title">{{helpCfg.title}}</div>
+    <div class="info-label">{{helpCfg.subTitle}}</div>
+</div>
+{{each helpList group}}
+<div class="cont-box">
+    <div class="cont-group">{{group.group}}</div>
+<div class="cont-table">
+{{each group.list help}}
+    <div class="cont-item">
+        <strong class="cont-title">{{help.title}}</strong>
+        <span class="cont-desc">{{help.desc}}</span>
+    </div>
+{{/each}}
+</div>
+</div>
+{{/each}}
+<div class="copyright">{{@sys.copyright}}</div>
+{{/block}}

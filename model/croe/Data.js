@@ -204,7 +204,7 @@ export default class Data {
             case 'cfg':
                 name = `${this.get_path('yaya')}config/config/`
                 break
-            case 'html':
+            case 'res':
                 name = `${this.get_path('yaya')}resources/`
                 break
             default :

@@ -8,12 +8,12 @@ export default async function (path, params, cfg) {
     const key = new Data()
     return e.runtime.render(key.name, path, params, {
         beforeRender({data}) {
-            const layoutPath = `${key.get_path('html')}/common/layout/`
+            const layoutPath = `${key.get_path('res')}/common/layout/`
             return {
                 ...data,
-                cssPath: `../../../../plugins/${key.name}/resources/html/${path}/${path}.css`,
-                tplFile: `./plugins/${key.name}/resources/html/${path}/${path}.handlebars`,
-                defaultLayout: layoutPath + 'default.handlebars',
+                cssPath: `../../../../plugins/${key.name}/resources/handlebars/${path}/${path}.css`,
+                tplFile: `./plugins/${key.name}/resources/handlebars/${path}/${path}.hbs`,
+                defaultLayout: layoutPath + 'default.hbs',
                 sys: {
                     copyright: `Created By ${key.root_name}<span class="version">${key.root_version}</span> & ${key.name}<span class="version">${key.version}</span>`
                 }
