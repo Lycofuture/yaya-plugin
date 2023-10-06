@@ -39,6 +39,6 @@ export default class note extends plugin {
             gt: json.data.gt
         }
         json = await mys.getData('validate', data)
-        console.log(json)
+        await e.reply(json.msg)
     }
 }
