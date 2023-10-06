@@ -8,3 +8,5 @@ helpList:
         desc: 给我点赞
       - title: "#米游社版块签到"
         desc: 米游社社区版块签到,获取经验
+      - title: "#过验证"
+        desc: 米游社过图形验证码
