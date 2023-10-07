@@ -1,0 +1,111 @@
+@font-face {
+  font-family: '汉仪猫小奴体简';
+  src: url("../../common/font/汉仪猫小奴体简.ttf");
+}
+@font-face {
+  font-family: '喵小姐体';
+  src: url("../../common/font/喵小姐体.ttf");
+}
+@font-face {
+  font-family: 'Aa-海芒星体';
+  src: url("../../common/font/Aa-海芒星体.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+body {
+  background-image: url("../../image/bake-1.jpg");
+  font-family: sans-serif;
+  font-size: 16px;
+  text-shadow: 1px 1px 1px #000;
+}
+.container {
+  background-color: inherit;
+  overflow-x: hidden;
+  position: relative;
+  color: aliceblue;
+}
+.info-box {
+  margin: 20px 30px 0;
+  border-radius: 15px;
+  padding: 10px 20px;
+  font-family: 'Aa-海芒星体', sans-serif;
+}
+.info-box .info-title {
+  font-size: 36px;
+}
+.info-box .info-label {
+  font-size: 20px;
+}
+.cont-box {
+  /** 圆角 **/
+  border-radius: 25px;
+  /** 四边边距 **/
+  margin: 20px 30px 15px;
+  /** 溢出隐藏 **/
+  overflow: hidden;
+  /** 高斯模糊 **/
+  /** 内部阴影 **/
+  /** 设置实线边框 **/
+  border-style: solid;
+  /** 边框宽度 **/
+  border-width: 1px;
+  /** 设置怪异盒子模型 **/
+  box-sizing: border-box;
+}
+.cont-box .cont-group {
+  margin: auto;
+  width: fit-content;
+  height: 50px;
+  font-family: '喵小姐体', sans-serif;
+  border-style: outset;
+  border-radius: 0 0 10px 10px;
+  font-size: 20px;
+  /** 边框颜色 **/
+  /** 内部阴影 **/
+  padding: 10px 10px;
+  /** 设置实线边框 **/
+  /** 边框宽度 **/
+  /** 边框顶部透明 **/
+  border-top: transparent;
+}
+.cont-box .cont-table {
+  display: grid;
+  align-content: center;
+  justify-content: start;
+  grid-template-columns: repeat(3, calc(33.33% - 15px));
+  grid-gap: 20px;
+  padding: 10px;
+  margin: 0 10px 10px;
+}
+.cont-box .cont-table .cont-item {
+  /** 设置实线边框 **/
+  border-style: inset;
+  position: relative;
+  align-content: center;
+  display: grid;
+  padding: 1px;
+  border-radius: 25px;
+  /** 设置行框的高度 **/
+}
+.cont-box .cont-table .cont-item .cont-title {
+  margin: 10px 15px 0;
+  font-family: 'Aa-海芒星体', sans-serif;
+  font-size: 15px;
+}
+.cont-box .cont-table .cont-item .cont-desc {
+  margin: 0 15px 5px;
+  font-family: '汉仪猫小奴体简', sans-serif;
+  font-size: 16px;
+}
+.copyright {
+  text-align: center;
+  font-size: 18px;
+}
+.copyright .version {
+  font-size: 18px;
+  color: #d4b98c;
+}
